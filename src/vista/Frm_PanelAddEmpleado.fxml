@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="314.0" prefWidth="302.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="controlador.Frm_PanelAddEmpleadoController">
+   <children>
+      <Pane prefHeight="321.0" prefWidth="302.0">
+         <children>
+            <Button layoutX="119.0" layoutY="269.0" mnemonicParsing="false" text="Añadir" />
+            <HBox layoutX="12.0" layoutY="58.0" prefHeight="177.0" prefWidth="268.0">
+               <children>
+                  <VBox prefHeight="177.0" prefWidth="105.0" spacing="15.0">
+                     <children>
+                        <Label text="Nombres:" />
+                        <Label text="Apellidos:" />
+                        <Label text="Fecha nacimiento:" />
+                        <Label text="Telefono:" />
+                        <Label text="Dirección:" />
+                        <Label text="Cedula:" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vboxDatos" prefHeight="266.0" prefWidth="143.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="txtNombres" />
+                        <TextField fx:id="txtApellidos" />
+                        <DatePicker fx:id="txtFecha" />
+                        <TextField fx:id="txtTelefono" />
+                        <TextField fx:id="txtDireccion" />
+                        <TextField fx:id="txtCedula" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label layoutX="99.0" layoutY="22.0" text="Datos personales" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
