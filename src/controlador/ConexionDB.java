@@ -15,9 +15,10 @@ import java.sql.DriverManager;
 public class ConexionDB {
     Connection conexion;
     public Connection conectar(){
-        String url = "jdbc:mariadb://localhost:3306/goodnight";
-        String user = "Specter";
-        String pwd = "dedsec8";     
+        //Cambiar las variables url, user y pwd
+        String url = "jdbc:mariadb://localhost:3306/sistemahotelero";
+        String user = "";
+        String pwd = "";     
         try {
             conexion = DriverManager.getConnection(url, user, pwd);
             System.out.println("Conexión realizada correctamente");
