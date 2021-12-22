@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="712.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="controlador.Frm_VentanaGeneralController">
+   <children>
+      <BorderPane fx:id="bpZona" prefHeight="487.0" prefWidth="712.0">
+         <top>
+            <Label prefHeight="22.0" prefWidth="112.0" style="-fx-alignment: center;" text="SISTEMA HOTELERO" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <left>
+            <VBox prefHeight="282.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnMA" mnemonicParsing="false" onAction="#cambiarEscena" prefHeight="129.0" prefWidth="155.0" text="Modulo Administrativo" />
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
