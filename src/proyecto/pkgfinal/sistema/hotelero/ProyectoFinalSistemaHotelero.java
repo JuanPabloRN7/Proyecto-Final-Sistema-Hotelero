@@ -20,6 +20,8 @@ public class ProyectoFinalSistemaHotelero extends Application{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // TODO code application logic here
+        //probar
         launch(args);
     }
     
