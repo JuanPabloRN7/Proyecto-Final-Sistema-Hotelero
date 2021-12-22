@@ -65,10 +65,8 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             int verificacion = ps.executeUpdate();
             ps.close();
             if (verificacion>0) {
-                System.out.println("Paso");
                 return true;
             }else{
-                System.out.println("no paso");
                 return false;
             }
         } catch (SQLException ex) {
@@ -76,7 +74,8 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             return false;
         }
     }
-
+    
+    
     @Override
     public Lista<T> listar() {
         Statement st = null;
