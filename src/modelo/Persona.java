@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Jainer Pinta
@@ -16,7 +18,7 @@ public class Persona {
     private String telefono;
     private String direccion;
     private String cedula;
-    private int edad;
+    private LocalDate fechaNacimiento;
 
     public Long getIdPersona() {
         return idPersona;
@@ -42,12 +44,12 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public int getEdad() {
-        return edad;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getTelefono() {
