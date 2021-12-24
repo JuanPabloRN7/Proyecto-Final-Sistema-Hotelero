@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="712.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="controlador.Frm_VentanaGeneralController">
+<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_VentanaGeneralController">
    <children>
       <BorderPane fx:id="bpZona" prefHeight="487.0" prefWidth="712.0">
          <top>
@@ -25,6 +24,9 @@
                </children>
             </VBox>
          </left>
+         <center>
+            <Button mnemonicParsing="false" onAction="#cambiarms" prefHeight="78.0" prefWidth="154.0" text="Modulo de Servicios" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

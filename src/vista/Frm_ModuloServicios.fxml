@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_ModuloServiciosController">
+   <children>
+      <Label layoutX="261.0" layoutY="21.0" prefHeight="42.0" prefWidth="132.0" text="          SERVICIOS" textAlignment="RIGHT" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="205.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/mejorar-el-servicio-hotelero-1020x680.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="boton" layoutX="108.0" layoutY="244.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="55.0" prefWidth="118.0" text="Ingresar Servicio" />
+      <Button layoutX="361.0" layoutY="244.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="55.0" prefWidth="132.0" text="Servicio al Cliente" />
+   </children>
+</AnchorPane>

@@ -7,6 +7,7 @@ package Controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,16 +15,17 @@ import java.sql.DriverManager;
  */
 public class ConexionDB {
     Connection conexion;
-    public Connection conectar(){
+    public Connection conectar() {
         //Cambiar las variables url, user y pwd
-        String url = "jdbc:mariadb://localhost:3306/sistemahotelero";
-        String user = "";
-        String pwd = "";     
+        String user = "root";
+        String pwd = "";   
         try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/sistemahotelero";
             conexion = DriverManager.getConnection(url, user, pwd);
             System.out.println("Conexión realizada correctamente");
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("error conectar: "+e);
         }
         return conexion;
     }

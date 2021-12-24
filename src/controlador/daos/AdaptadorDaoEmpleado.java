@@ -82,11 +82,11 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
         ResultSet rs = null;
         lista = new Lista<>();
         Connection conexion = conexionDB.conectar();  
-        Empleado empleado = new Empleado();
         try {
             st = conexion.createStatement();
             rs = st.executeQuery("SELECT * FROM empleados");
-            while (rs.next()) {        
+            while (rs.next()) {    
+                Empleado empleado = new Empleado();
                 empleado.setIdPersona(rs.getLong("ID"));
                 empleado.setNombres(rs.getString("Nombres"));
                 empleado.setApellidos(rs.getString("Apellidos"));

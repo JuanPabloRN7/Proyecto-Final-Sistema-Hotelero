@@ -46,7 +46,7 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
     
     @FXML
     private void addEmpleado(){
-        if (verificarCampos()) {
+        if (verificarCampos()) { 
             empleadoDao.getEmpleado().setApellidos(txtApellidos.getText());
             empleadoDao.getEmpleado().setNombres(txtNombres.getText());
             empleadoDao.getEmpleado().setTelefono(txtTelefono.getText());
