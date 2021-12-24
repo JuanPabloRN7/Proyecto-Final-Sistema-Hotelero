@@ -37,6 +37,14 @@ public class Frm_VentanaGeneralController implements Initializable {
         }
     }
     
+    @FXML
+    private void cambiarms(ActionEvent e){
+        //if (e.getSource() == btms) {
+            cargarEscena("/vista/Frm_ModuloServicios.fxml"); 
+
+        //}
+    }
+    
     private void cargarEscena(String direccioneEscena){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccioneEscena));
         bpZona.getChildren().remove(bpZona.getCenter());
