@@ -11,7 +11,7 @@ package modelo;
  */
 public class Servicio {
     private Long IdServicio;
-    private String nombreServicio; 
+    private String nombreServicio;
     private double precio;
 
     public String getNombreServicio() {

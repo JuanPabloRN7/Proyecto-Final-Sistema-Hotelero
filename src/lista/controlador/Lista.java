@@ -96,7 +96,7 @@ public class Lista <T> implements Serializable{
      * @param posicion posicion en la lista
      * @return dato encontrado en la posicion
      */
-    public T consultarDatoPosicion(int posicion){
+    public T consultarDatoPosicion(int posicion){ 
         T dato = null;
         if (!estaVacias() && (posicion >= 0 && posicion <= sizeLista()-1)) {       
             Nodo tmp = getCabecera();        
