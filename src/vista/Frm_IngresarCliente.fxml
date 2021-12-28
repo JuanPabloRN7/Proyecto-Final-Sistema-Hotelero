@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="356.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_IngresarClienteController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="330.0" prefWidth="328.0" style="-fx-background-color: #FFCE45;">
+         <children>
+            <Label layoutX="52.0" layoutY="81.0" text="Nombres">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="121.0" text="Apellidos">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="156.0" text="Cedula">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="194.0" text="Direccion">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="231.0" text="Telefono">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="70.0" fitWidth="68.0" layoutX="5.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/ingresar.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="80.0" layoutY="25.0" prefHeight="36.0" prefWidth="206.0" text="INGRESAR CLIENTE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Button layoutX="125.0" layoutY="271.0" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="26.0" prefWidth="99.0" text="Guardar" />
+            <VBox fx:id="vBoxDatos" layoutX="125.0" layoutY="81.0" prefHeight="170.0" prefWidth="182.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="txtNombres" prefHeight="26.0" prefWidth="213.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <TextField fx:id="txtApellidos" prefHeight="26.0" prefWidth="214.0" />
+                  <TextField fx:id="txtCedula" prefHeight="26.0" prefWidth="197.0" />
+                  <TextField fx:id="txtDireccion" prefHeight="26.0" prefWidth="214.0" />
+                  <TextField fx:id="txtTelefono" prefHeight="26.0" prefWidth="214.0" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblClientes" layoutX="354.0" layoutY="58.0" onSort="#Apellidos" prefHeight="243.0" prefWidth="462.0">
+        <columns>
+          <TableColumn fx:id="columNombres" prefWidth="68.79998779296875" text="Nombres" />
+          <TableColumn fx:id="columApellidos" prefWidth="103.99996948242188" text="Apellidos" />
+            <TableColumn fx:id="columCedula" prefWidth="101.60003662109375" text="Cedula" />
+            <TableColumn fx:id="columDireccion" prefWidth="72.0" text="Direccion" />
+            <TableColumn fx:id="columTelefono" prefWidth="117.59991455078125" text="Telefono" />
+        </columns>
+      </TableView>
+      <Button layoutX="354.0" layoutY="313.0" mnemonicParsing="false" onAction="#seleccionarCliente" prefHeight="26.0" prefWidth="92.0" text="Selecionar" />
+      <TextField fx:id="txtBuscar" layoutX="464.0" layoutY="20.0" prefHeight="26.0" prefWidth="304.0" promptText="Buscar por nombre y apellido" />
+      <ComboBox fx:id="cbxcriterio" layoutX="354.0" layoutY="20.0" prefHeight="26.0" prefWidth="110.0" />
+      <Button layoutX="768.0" layoutY="19.0" mnemonicParsing="false" onAction="#buscar" prefHeight="26.0" prefWidth="29.0">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/buscar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
