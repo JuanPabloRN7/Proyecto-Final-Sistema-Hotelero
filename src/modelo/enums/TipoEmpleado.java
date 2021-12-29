@@ -13,5 +13,7 @@ public enum TipoEmpleado {
     MESERO,
     RECEPCIONISTA,
     COCINERO,
-    LIMPIEZA,        
+    LIMPIEZA,
+    GERENTE,
+    CONTADOR,
 }
