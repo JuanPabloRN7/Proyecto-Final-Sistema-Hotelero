@@ -14,12 +14,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lista.controlador.Lista;
 import modelo.Empleado;
+import modelo.enums.TipoEmpleado;
 
 /**
  * FXML Controller class
@@ -31,7 +33,7 @@ public class Frm_AsignarCargoController implements Initializable {
     private @FXML TextField txtID;
     private @FXML TextField txtNombres;
     private @FXML TextField txtApellidos;
-    private @FXML TextField txtCargo;
+    private @FXML ComboBox cbxCargo;
     private @FXML TableView tblEmpleados;
     private @FXML TableColumn<Empleado, String> colID;
     private @FXML TableColumn<Empleado, String> colNombres;
@@ -45,8 +47,16 @@ public class Frm_AsignarCargoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cargarCbxCargo();
         cargarTabla();
     }    
+    
+    private void cargarCbxCargo(){
+        cbxCargo.getItems().clear();
+        for (TipoEmpleado empleado : TipoEmpleado.values()) {
+            cbxCargo.getItems().add(empleado.toString());
+        }
+    }
     
     @FXML
     private void cargarEmpleadoSeleccionado(){
@@ -54,13 +64,12 @@ public class Frm_AsignarCargoController implements Initializable {
         txtID.setText(empleado.getIdentificacion());
         txtApellidos.setText(empleado.getApellidos());
         txtNombres.setText(empleado.getNombres());
-        txtCargo.setText(empleado.getCargo());
     }
     
     @FXML
     private void asignarCargo(){
         if (!txtID.getText().trim().isEmpty()) {
-            if(empleadoDao.modificar(txtCargo.getText(), txtID.getText())){
+            if(empleadoDao.modificar(cbxCargo.getSelectionModel().getSelectedItem().toString(), txtID.getText())){
                 crearAlerta(AlertType.INFORMATION, "OK", "Cargo asignado", "Se ha asignado correctamene el cargo al empleado");
             }else{
                crearAlerta(AlertType.ERROR, "ERROR", "Cargo no asignado", "Ha existido un error al asignar el cargo al empleado");
@@ -78,6 +87,7 @@ public class Frm_AsignarCargoController implements Initializable {
         alerta.setContentText(mensaje);
         alerta.showAndWait();
     }
+    
     private void cargarTabla(){
         Lista<Empleado> lista = empleadoDao.listar();
         ObservableList<Empleado> listaFX = FXCollections.observableArrayList();

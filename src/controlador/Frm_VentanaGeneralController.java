@@ -21,31 +21,42 @@ import javafx.scene.layout.BorderPane;
  * @author Jainer Pinta
  */
 public class Frm_VentanaGeneralController implements Initializable {
-    private @FXML BorderPane bpZona;
-    private @FXML Button btnMA;
+
+    private @FXML
+    BorderPane bpZona;
+    private @FXML
+    Button btnMA;
+    @FXML
+    private Button btnMR;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
     @FXML
-    private void cambiarEscena(ActionEvent e){
-        if ((Button)e.getSource() == btnMA) {
-            cargarEscena("/vista/Frm_ModuloAdministrativo.fxml");   
+    private void cambiarEscena(ActionEvent e) {
+        if ((Button) e.getSource() == btnMA) {
+            cargarEscena("/vista/Frm_ModuloAdministrativo.fxml");
         }
     }
-    
+
     @FXML
-    private void cambiarms(ActionEvent e){
+    private void cambiarms(ActionEvent e) {
         //if (e.getSource() == btms) {
-            cargarEscena("/vista/Frm_ModuloServicios.fxml"); 
+        cargarEscena("/vista/Frm_ModuloServicios.fxml");
 
         //}
     }
-    
-    private void cargarEscena(String direccioneEscena){
+
+    @FXML
+    private void cambiarEscenaMR(ActionEvent event) {
+        cargarEscena("/vista/Frm_ModuloReserva.fxml");
+    }
+
+    private void cargarEscena(String direccioneEscena) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccioneEscena));
         bpZona.getChildren().remove(bpZona.getCenter());
         try {
@@ -53,5 +64,5 @@ public class Frm_VentanaGeneralController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }    
+    }
 }

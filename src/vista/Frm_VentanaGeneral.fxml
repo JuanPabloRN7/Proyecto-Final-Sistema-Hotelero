@@ -21,12 +21,11 @@
             <VBox prefHeight="282.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btnMA" mnemonicParsing="false" onAction="#cambiarEscena" prefHeight="129.0" prefWidth="155.0" text="Modulo Administrativo" />
+                  <Button mnemonicParsing="false" onAction="#cambiarms" prefHeight="106.0" prefWidth="150.0" text="Modulo de Servicios" />
+                  <Button fx:id="btnMR" mnemonicParsing="false" onAction="#cambiarEscenaMR" prefHeight="102.0" prefWidth="152.0" text="Modulo de reserva" />
                </children>
             </VBox>
          </left>
-         <center>
-            <Button mnemonicParsing="false" onAction="#cambiarms" prefHeight="78.0" prefWidth="154.0" text="Modulo de Servicios" BorderPane.alignment="CENTER" />
-         </center>
       </BorderPane>
    </children>
 </AnchorPane>
