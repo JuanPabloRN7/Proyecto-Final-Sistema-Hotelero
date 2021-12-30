@@ -28,7 +28,7 @@ public class ProyectoFinalSistemaHotelero extends Application{
     @Override
     public void start(Stage stage) throws Exception {
          try{
-            Parent root = FXMLLoader.load(getClass().getResource("/vista/Frm_VentanaGeneral.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/vista/Frm_VentanaLogin.fxml"));
             Scene escena1 = new Scene(root);
             stage.setScene(escena1);
             stage.setTitle("Sistema Hotelero");

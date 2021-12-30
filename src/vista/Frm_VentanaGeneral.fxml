@@ -3,29 +3,46 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_VentanaGeneralController">
+<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="712.0" style="-fx-background-color: #323031;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_VentanaGeneralController">
    <children>
       <BorderPane fx:id="bpZona" prefHeight="487.0" prefWidth="712.0">
          <top>
-            <Label prefHeight="22.0" prefWidth="112.0" style="-fx-alignment: center;" text="SISTEMA HOTELERO" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Label prefHeight="22.0" prefWidth="112.0" style="-fx-alignment: center;" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="15.0" />
                </BorderPane.margin>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/Group%201.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
          </top>
          <left>
             <VBox prefHeight="282.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnMA" mnemonicParsing="false" onAction="#cambiarEscena" prefHeight="129.0" prefWidth="155.0" text="Modulo Administrativo" />
-                  <Button mnemonicParsing="false" onAction="#cambiarms" prefHeight="106.0" prefWidth="150.0" text="Modulo de Servicios" />
-                  <Button fx:id="btnMR" mnemonicParsing="false" onAction="#cambiarEscenaMR" prefHeight="102.0" prefWidth="152.0" text="Modulo de reserva" />
+                  <Button fx:id="btnMA" mnemonicParsing="false" onAction="#cambiarEscena" prefHeight="79.0" prefWidth="151.0" style="-fx-background-color: #476B59;" text="Modulo Administrativo" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#cambiarms" prefHeight="89.0" prefWidth="151.0" style="-fx-background-color: #A0A8B9;" text="Modulo de Servicios" textFill="WHITE" />
+                  <Button fx:id="btnMR" mnemonicParsing="false" onAction="#cambiarEscenaMR" prefHeight="85.0" prefWidth="151.0" style="-fx-background-color: #4AA7E0;" text="Modulo de Reserva" textFill="WHITE" />
+                  <Button fx:id="btnMRe" mnemonicParsing="false" onAction="#cambiarmr" prefHeight="85.0" prefWidth="151.0" style="-fx-background-color: #A359F7;" text="Modulo de Recepcion" textFill="WHITE" />
                </children>
             </VBox>
          </left>
+         <center>
+            <ImageView fitHeight="383.0" fitWidth="481.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../imagenes/letrashotel.jpg" />
+               </image>
+            </ImageView>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
