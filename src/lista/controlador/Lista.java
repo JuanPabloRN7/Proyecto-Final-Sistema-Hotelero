@@ -96,7 +96,7 @@ public class Lista <T> implements Serializable{
      * @param posicion posicion en la lista
      * @return dato encontrado en la posicion
      */
-    public T consultarDatoPosicion(int posicion){ 
+    public T consultarDatoPosicion(int posicion){
         T dato = null;
         if (!estaVacias() && (posicion >= 0 && posicion <= sizeLista()-1)) {       
             Nodo tmp = getCabecera();        
@@ -117,6 +117,65 @@ public class Lista <T> implements Serializable{
             System.out.println(tmp.getDato());
             tmp  = tmp.getNodoSiguiente();
         }
+    }
+    
+    public Lista<T> busquedaSecuencial(T dato, String atributo){
+        Lista listaResultados = new Lista();
+        try{
+            for (int i = 0; i < sizeLista(); i++) {
+                Object datoAux = value(consultarDatoPosicion(i), atributo);
+                if (datoAux instanceof Number) {
+                    Number datoC = (Number)datoAux;
+                    Double datoBuscar = Double.valueOf(dato.toString());
+                    if (datoBuscar==datoC.doubleValue()) {
+                        listaResultados.insertarNodo(consultarDatoPosicion(i));
+                    }
+                }else{
+                    if (datoAux.toString().contains(dato.toString())) {
+                        listaResultados.insertarNodo(consultarDatoPosicion(i));
+                    }
+                }        
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return listaResultados;
+    }
+    
+    public T busquedaBinaria(T dato, String atributo){
+        try{
+            int posCentral, posInicial, posFinal;
+            posInicial = 0;
+            posFinal = sizeLista()-1;
+            T datoCentral;
+            while(posInicial <= posFinal){
+                posCentral = (posInicial+posFinal)/2;
+                datoCentral = consultarDatoPosicion(posCentral);
+                boolean band = false;
+                Object datoAux = value(datoCentral, atributo);
+                if (datoAux instanceof Number) {
+                    Number datoC = (Number)datoAux;
+                    Double datoBuscar = Double.valueOf(dato.toString());
+                    if (datoBuscar==datoC.doubleValue()) {
+                        return (T)datoCentral;
+                    }
+                    band = (datoC.doubleValue() > datoBuscar);
+                }else{
+                    if (datoAux.toString().equals(dato.toString())) {
+                        return (T)datoCentral;
+                    }
+                    band = (datoAux.toString().compareTo(dato.toString())>0);
+                }
+                if (band) {
+                    posFinal = posCentral-1;
+                }else{
+                    posInicial = posCentral+1;
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;   
     }
     
     public void borrar(int posicion){
