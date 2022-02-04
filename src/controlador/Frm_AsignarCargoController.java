@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,7 +24,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lista.controlador.Lista;
 import modelo.Empleado;
-import modelo.enums.TipoEmpleado;
 
 /**
  * FXML Controller class
@@ -34,6 +32,8 @@ import modelo.enums.TipoEmpleado;
  */
 public class Frm_AsignarCargoController implements Initializable {
     private EmpleadoDao empleadoDao = new EmpleadoDao();
+    private EmpleadoController ec = new EmpleadoController();
+    
     private @FXML TableView tblEmpleados;
     private @FXML TableColumn<Empleado, String> colID;
     private @FXML TableColumn<Empleado, String> colNombres;
@@ -42,15 +42,23 @@ public class Frm_AsignarCargoController implements Initializable {
     private @FXML TableColumn<Empleado, String> colTelefono;
     private @FXML TableColumn<Empleado, String> colCargo;
     private @FXML Pane panelFormulario;
+    private @FXML ComboBox cbxParametro;
+    private @FXML TextField txtCampoBusqueda;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cargarTabla();
+        ec.setEmpleados(empleadoDao.listar());
+        cargarTabla(ec.getEmpleados());
         cargarFormulario();
+        cargarCombo();
     }    
+    
+    private void cargarCombo(){
+        cbxParametro.getItems().addAll("Nombres","Apellidos","Telefono","Direccion","Cedula","Identificacion");
+    }
     
     private void cargarFormulario(){
         try{
@@ -69,8 +77,7 @@ public class Frm_AsignarCargoController implements Initializable {
         alerta.showAndWait();
     }
     
-    private void cargarTabla(){
-        Lista<Empleado> lista = empleadoDao.listar();
+    private void cargarTabla(Lista<Empleado> lista){
         ObservableList<Empleado> listaFX = FXCollections.observableArrayList();
         for (int i = 0; i < lista.sizeLista(); i++) {
             listaFX.add(lista.consultarDatoPosicion(i));
@@ -82,6 +89,18 @@ public class Frm_AsignarCargoController implements Initializable {
         colTelefono.setCellValueFactory(new PropertyValueFactory<Empleado,String>("telefono"));
         colCargo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRol().getCargo()));
         tblEmpleados.getItems().setAll(listaFX);           
+    }
+    
+    @FXML
+    private void buscarEmpleado(){
+        if (!txtCampoBusqueda.getText().isEmpty() && cbxParametro.getSelectionModel().getSelectedIndex()!= -1) {
+            Lista<Empleado> empleados = ec.buscarEmpleado(txtCampoBusqueda.getText().trim(), cbxParametro.getSelectionModel().getSelectedItem().toString().toLowerCase());
+            if(empleados != null ){
+               cargarTabla(empleados);
+            }
+        }else{
+            cargarTabla(ec.getEmpleados());
+        }
     }
     
 }

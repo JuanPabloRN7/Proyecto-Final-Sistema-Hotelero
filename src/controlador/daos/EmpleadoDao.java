@@ -13,13 +13,14 @@ import modelo.Empleado;
  */
 public class EmpleadoDao extends AdaptadorDaoEmpleado<Empleado>{
     private Empleado empleado;
+    
     public EmpleadoDao() {
         super(Empleado.class);
     }  
     
     public Empleado getEmpleado() {
         if(this.empleado == null)
-            this.empleado  = new Empleado();
+            this.empleado = new Empleado();
         return empleado;
     }
 

@@ -4,7 +4,6 @@
  */
 package controlador;
 
-import controlador.daos.ClienteDao;
 import Controlador.ConexionDB;
 import controlador.daos.ClienterecDao;
 import java.net.URL;
@@ -28,7 +27,7 @@ public class Frm_IngresarCheckinController implements Initializable {
     private ClienterecDao clienteDao = new ClienterecDao();
     private PersonaController pc = new PersonaController();
 
-   private @FXML TextField txtNombres;
+    private @FXML TextField txtNombres;
     private @FXML TextField txtApellidos;
     private @FXML TextField txtTelefono;
     private @FXML TextField txtDireccion;

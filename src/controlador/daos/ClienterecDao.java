@@ -2,8 +2,6 @@
 package controlador.daos;
 
 import modelo.Cliente;
-import javafx.scene.PerspectiveCamera;
-import modelo.Persona;
 
 /**
  *

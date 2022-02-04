@@ -119,19 +119,19 @@ public class Lista <T> implements Serializable{
         }
     }
     
-    public Lista<T> busquedaSecuencial(T dato, String atributo){
-        Lista listaResultados = new Lista();
+    public Lista<T> busquedaSecuencial(String dato, String atributo){
+        Lista<T> listaResultados = new Lista();
         try{
             for (int i = 0; i < sizeLista(); i++) {
                 Object datoAux = value(consultarDatoPosicion(i), atributo);
                 if (datoAux instanceof Number) {
                     Number datoC = (Number)datoAux;
-                    Double datoBuscar = Double.valueOf(dato.toString());
+                    Double datoBuscar = Double.valueOf(dato);
                     if (datoBuscar==datoC.doubleValue()) {
                         listaResultados.insertarNodo(consultarDatoPosicion(i));
                     }
                 }else{
-                    if (datoAux.toString().contains(dato.toString())) {
+                    if (datoAux.toString().contains(dato)) {
                         listaResultados.insertarNodo(consultarDatoPosicion(i));
                     }
                 }        
@@ -142,7 +142,7 @@ public class Lista <T> implements Serializable{
         return listaResultados;
     }
     
-    public T busquedaBinaria(T dato, String atributo){
+    public T busquedaBinaria(String dato, String atributo){
         try{
             int posCentral, posInicial, posFinal;
             posInicial = 0;
@@ -155,16 +155,16 @@ public class Lista <T> implements Serializable{
                 Object datoAux = value(datoCentral, atributo);
                 if (datoAux instanceof Number) {
                     Number datoC = (Number)datoAux;
-                    Double datoBuscar = Double.valueOf(dato.toString());
+                    Double datoBuscar = Double.valueOf(dato);
                     if (datoBuscar==datoC.doubleValue()) {
                         return (T)datoCentral;
                     }
                     band = (datoC.doubleValue() > datoBuscar);
                 }else{
-                    if (datoAux.toString().equals(dato.toString())) {
-                        return (T)datoCentral;
+                    if (datoAux.toString().equals(dato)) {
+                        return datoCentral;
                     }
-                    band = (datoAux.toString().compareTo(dato.toString())>0);
+                    band = (datoAux.toString().compareTo(dato)>0);
                 }
                 if (band) {
                     posFinal = posCentral-1;

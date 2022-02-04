@@ -10,10 +10,10 @@ package modelo.enums;
  * @author Jainer Pinta
  */
 public enum TipoEmpleado {
-    MESERO,
     RECEPCIONISTA,
+    GERENTE,
     COCINERO,
     LIMPIEZA,
-    GERENTE,
+    MESERO,
     CONTADOR,
 }

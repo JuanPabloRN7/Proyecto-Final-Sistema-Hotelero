@@ -99,7 +99,7 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
                 empleado.setIdentificacion(rs.getString("IDEmpleado"));
                 empleado.getRol().setCargo(rs.getString("Cargo"));
                 empleado.getRol().setAutorizacion(rs.getBoolean("Autorizacion"));
-                lista.insertarNodo((T) empleado);
+                lista.insertarNodo((T)empleado);
             }            
         } catch (SQLException ex) {
             ex.printStackTrace();
