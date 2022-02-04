@@ -5,13 +5,15 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jainer Pinta
  */
 public class Empleado extends Persona{
     private String identificacion;
-    private String cargo;
+    private Rol rol;
 
     public String getIdentificacion() {
         return identificacion;
@@ -21,12 +23,15 @@ public class Empleado extends Persona{
         this.identificacion = identificacion;
     }
 
-    public String getCargo() {
-        return cargo;
+    public Rol getRol() {
+        if(rol == null)
+            rol = new Rol();
+        return rol;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
+    
     
 }
