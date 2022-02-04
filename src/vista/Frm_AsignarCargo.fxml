@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_AsignarCargoController">
+<AnchorPane id="AnchorPane" prefHeight="488.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_AsignarCargoController">
    <children>
-      <TableView fx:id="tblEmpleados" layoutX="21.0" layoutY="202.0" onMouseClicked="#cargarEmpleadoSeleccionado" prefHeight="260.0" prefWidth="644.0">
+      <TableView fx:id="tblEmpleados" layoutX="315.0" layoutY="206.0" prefHeight="260.0" prefWidth="522.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="75.0" text="IDEmpleado" />
           <TableColumn fx:id="colNombres" prefWidth="111.0" text="Nombres" />
@@ -22,26 +17,6 @@
             <TableColumn fx:id="colCargo" prefWidth="120.0" text="Cargo" />
         </columns>
       </TableView>
-      <HBox layoutX="369.0" layoutY="21.0" prefHeight="129.0" prefWidth="304.0">
-         <children>
-            <VBox prefHeight="129.0" prefWidth="100.0" spacing="15.0">
-               <children>
-                  <Label text="IDEmpleado" />
-                  <Label text="Nombres" />
-                  <Label text="Apellidos" />
-                  <Label text="Cargo" />
-               </children>
-            </VBox>
-            <VBox prefHeight="164.0" prefWidth="205.0" spacing="5.0">
-               <children>
-                  <TextField fx:id="txtID" editable="false" />
-                  <TextField fx:id="txtNombres" editable="false" />
-                  <TextField fx:id="txtApellidos" editable="false" />
-                  <ComboBox fx:id="cbxCargo" prefHeight="25.0" prefWidth="216.0" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Button layoutX="484.0" layoutY="150.0" mnemonicParsing="false" onAction="#asignarCargo" text="Asignar" />
+      <Pane fx:id="panelFormulario" layoutX="14.0" layoutY="14.0" prefHeight="461.0" prefWidth="291.0" />
    </children>
 </AnchorPane>
