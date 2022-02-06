@@ -34,7 +34,7 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
         Empleado empleado = (Empleado)dato;
         Connection conexion = conexionDB.conectar();
         try {
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO empleados(ID,Nombres,Apellidos,FechaNacimiento,Telefono,Direccion,Cedula,IDEmpleado,Cargo) VALUE(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO empleados(ID,Nombres,Apellidos,FechaNacimiento,Telefono,Direccion,Cedula,IDEmpleado,Cargo,Autorizacion) VALUE(?,?,?,?,?,?,?,?,?,?)");
             ps.setLong(1, empleado.getIdPersona());
             ps.setString(2, empleado.getNombres());
             ps.setString(3, empleado.getApellidos());
@@ -43,7 +43,8 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             ps.setString(6, empleado.getDireccion());
             ps.setString(7, empleado.getCedula());
             ps.setString(8, empleado.getIdentificacion());
-            ps.setString(9, empleado.getCargo());
+            ps.setString(9, empleado.getRol().getCargo());
+            ps.setBoolean(10, empleado.getRol().isAutorizacion());
             int verificacion = ps.executeUpdate();
             ps.close();
             if (verificacion>0) {
@@ -96,8 +97,9 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
                 empleado.setIdentificacion(rs.getString("IDEmpleado"));
                 empleado.setCedula(rs.getString("Cedula"));
                 empleado.setIdentificacion(rs.getString("IDEmpleado"));
-                empleado.setCargo(rs.getString("Cargo"));
-                lista.insertarNodo((T) empleado);
+                empleado.getRol().setCargo(rs.getString("Cargo"));
+                empleado.getRol().setAutorizacion(rs.getBoolean("Autorizacion"));
+                lista.insertarNodo((T)empleado);
             }            
         } catch (SQLException ex) {
             ex.printStackTrace();

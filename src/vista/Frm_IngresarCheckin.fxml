@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="469.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_IngresarCheckinController">
+   <children>
+      <Pane layoutX="14.0" layoutY="13.0" onDragDetected="#agregarCliente" prefHeight="464.0" prefWidth="394.0">
+         <children>
+            <Button fx:id="" layoutX="133.0" layoutY="400.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="27.0" prefWidth="128.0" text="Agregar" />
+            <HBox layoutX="63.0" layoutY="60.0" prefHeight="220.0" prefWidth="268.0">
+               <children>
+                  <VBox prefHeight="238.0" prefWidth="156.0" spacing="15.0">
+                     <children>
+                        <Label text="Nombres:" />
+                        <Label text="Apellidos:" />
+                        <Label text="Cedula:" />
+                        <Label text="Telefono:" />
+                        <Label text="Dirección:" />
+                        <Label text="Fecha Entrada" />
+                        <Label text="Fecha Salida" />
+                        <Label text="Hora Entrada" />
+                        <Label text="Hora Salida" />
+                        <Label text="Nro Habitacion" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vboxDatos" prefHeight="266.0" prefWidth="143.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="txtNombres" />
+                        <TextField fx:id="txtApellidos" />
+                        <TextField fx:id="txtCedula" />
+                        <TextField fx:id="txtTelefono" />
+                        <TextField fx:id="txtDireccion" />
+                        <DatePicker fx:id="txtFechaEntrada" />
+                        <DatePicker fx:id="txtFechaSalida" />
+                        <TextField fx:id="txtHoraEntrada" />
+                        <TextField fx:id="txtHoraSalida" />
+                        <TextField fx:id="txtHabitacion" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Label layoutX="146.0" layoutY="24.0" text="Nuevo Cliente">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

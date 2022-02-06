@@ -6,22 +6,24 @@
 package controlador;
 
 import controlador.daos.EmpleadoDao;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import lista.controlador.Lista;
 import modelo.Empleado;
-import modelo.enums.TipoEmpleado;
 
 /**
  * FXML Controller class
@@ -30,10 +32,8 @@ import modelo.enums.TipoEmpleado;
  */
 public class Frm_AsignarCargoController implements Initializable {
     private EmpleadoDao empleadoDao = new EmpleadoDao();
-    private @FXML TextField txtID;
-    private @FXML TextField txtNombres;
-    private @FXML TextField txtApellidos;
-    private @FXML ComboBox cbxCargo;
+    private EmpleadoController ec = new EmpleadoController();
+    
     private @FXML TableView tblEmpleados;
     private @FXML TableColumn<Empleado, String> colID;
     private @FXML TableColumn<Empleado, String> colNombres;
@@ -41,42 +41,31 @@ public class Frm_AsignarCargoController implements Initializable {
     private @FXML TableColumn<Empleado, String> colCedula;
     private @FXML TableColumn<Empleado, String> colTelefono;
     private @FXML TableColumn<Empleado, String> colCargo;
+    private @FXML Pane panelFormulario;
+    private @FXML ComboBox cbxParametro;
+    private @FXML TextField txtCampoBusqueda;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cargarCbxCargo();
-        cargarTabla();
+        ec.setEmpleados(empleadoDao.listar());
+        cargarTabla(ec.getEmpleados());
+        cargarFormulario();
+        cargarCombo();
     }    
     
-    private void cargarCbxCargo(){
-        cbxCargo.getItems().clear();
-        for (TipoEmpleado empleado : TipoEmpleado.values()) {
-            cbxCargo.getItems().add(empleado.toString());
-        }
+    private void cargarCombo(){
+        cbxParametro.getItems().addAll("Nombres","Apellidos","Telefono","Direccion","Cedula","Identificacion");
     }
     
-    @FXML
-    private void cargarEmpleadoSeleccionado(){
-        Empleado empleado = (Empleado)tblEmpleados.getSelectionModel().getSelectedItem();
-        txtID.setText(empleado.getIdentificacion());
-        txtApellidos.setText(empleado.getApellidos());
-        txtNombres.setText(empleado.getNombres());
-    }
-    
-    @FXML
-    private void asignarCargo(){
-        if (!txtID.getText().trim().isEmpty()) {
-            if(empleadoDao.modificar(cbxCargo.getSelectionModel().getSelectedItem().toString(), txtID.getText())){
-                crearAlerta(AlertType.INFORMATION, "OK", "Cargo asignado", "Se ha asignado correctamene el cargo al empleado");
-            }else{
-               crearAlerta(AlertType.ERROR, "ERROR", "Cargo no asignado", "Ha existido un error al asignar el cargo al empleado");
-            }
-            cargarTabla();
-        }else{
-            crearAlerta(AlertType.ERROR, "ERROR", "Campo Vacio", "Ingrese un dato en el campo cargo");
+    private void cargarFormulario(){
+        try{
+            Pane formulario = FXMLLoader.load(getClass().getResource("/vista/Frm_PanelAddEmpleado.fxml"));
+            panelFormulario.getChildren().add(formulario);
+        }catch(IOException e){
+            e.printStackTrace();
         }
     }
     
@@ -88,8 +77,7 @@ public class Frm_AsignarCargoController implements Initializable {
         alerta.showAndWait();
     }
     
-    private void cargarTabla(){
-        Lista<Empleado> lista = empleadoDao.listar();
+    private void cargarTabla(Lista<Empleado> lista){
         ObservableList<Empleado> listaFX = FXCollections.observableArrayList();
         for (int i = 0; i < lista.sizeLista(); i++) {
             listaFX.add(lista.consultarDatoPosicion(i));
@@ -99,8 +87,20 @@ public class Frm_AsignarCargoController implements Initializable {
         colApellidos.setCellValueFactory(new PropertyValueFactory<Empleado,String>("apellidos"));
         colCedula.setCellValueFactory(new PropertyValueFactory<Empleado,String>("cedula"));
         colTelefono.setCellValueFactory(new PropertyValueFactory<Empleado,String>("telefono"));
-        colCargo.setCellValueFactory(new PropertyValueFactory<Empleado,String>("cargo"));
+        colCargo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRol().getCargo()));
         tblEmpleados.getItems().setAll(listaFX);           
+    }
+    
+    @FXML
+    private void buscarEmpleado(){
+        if (!txtCampoBusqueda.getText().isEmpty() && cbxParametro.getSelectionModel().getSelectedIndex()!= -1) {
+            Lista<Empleado> empleados = ec.buscarEmpleado(txtCampoBusqueda.getText().trim(), cbxParametro.getSelectionModel().getSelectedItem().toString().toLowerCase());
+            if(empleados != null ){
+               cargarTabla(empleados);
+            }
+        }else{
+            cargarTabla(ec.getEmpleados());
+        }
     }
     
 }

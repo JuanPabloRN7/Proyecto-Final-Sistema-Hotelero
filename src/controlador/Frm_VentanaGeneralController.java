@@ -55,6 +55,13 @@ public class Frm_VentanaGeneralController implements Initializable {
     private void cambiarEscenaMR(ActionEvent event) {
         cargarEscena("/vista/Frm_ModuloReserva.fxml");
     }
+    
+     @FXML
+    private void cambiarmr(ActionEvent e){
+            cargarEscena("/vista/Frm_ModuloRecepcion.fxml");  
+
+        
+    }
 
     private void cargarEscena(String direccioneEscena) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccioneEscena));
