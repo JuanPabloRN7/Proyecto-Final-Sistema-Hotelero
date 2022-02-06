@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  * @author Jainer Pinta
  */
 public class Frm_ModuloAdministrativoController implements Initializable {
-    private @FXML Button btnAdd;
+    private @FXML Button btnReporte;
     /**
      * Initializes the controller class.
      */
@@ -35,8 +35,8 @@ public class Frm_ModuloAdministrativoController implements Initializable {
     
     @FXML
     private void seleccionarVentana(ActionEvent e){
-        if (e.getSource() == btnAdd) {
-            cargarVentana("/vista/Frm_PanelAddEmpleado.fxml");
+        if (e.getSource() == btnReporte) {
+            cargarVentana("/vista/Frm_ReporteEmpleados.fxml");
         }else{
             cargarVentana("/vista/Frm_AsignarCargo.fxml");
         }

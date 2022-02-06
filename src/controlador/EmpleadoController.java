@@ -5,9 +5,17 @@
  */
 package controlador;
 
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import lista.controlador.Lista;
 import modelo.Empleado;
-import modelo.Persona;
 
 /**
  *
@@ -28,8 +36,8 @@ public class EmpleadoController extends PersonaController{
     }
 
     public Lista<Empleado> getEmpleados() {
-        if(this.empleado == null)
-            this.empleado = new Empleado();
+        if(this.empleados == null)
+            this.empleados = new Lista<>();
         return this.empleados;
     }
 
@@ -63,5 +71,55 @@ public class EmpleadoController extends PersonaController{
             resultadoBusqueda = empleados.busquedaSecuencial(dato, atributo);
         }
         return resultadoBusqueda;
+    }
+    
+    public boolean generarReporte(String cargo, String directorio){
+        try{
+            Lista <Empleado> empleadosReporte = empleados;
+            if(!cargo.equalsIgnoreCase("todo")){
+                Lista <Empleado> aux = new Lista<>();
+                for(int i = 0; i < empleadosReporte.sizeLista(); i++){
+                    if (empleadosReporte.consultarDatoPosicion(i).getRol().getCargo().equalsIgnoreCase(cargo)) {
+                        aux.insertarNodo(empleadosReporte.consultarDatoPosicion(i));
+                    }
+                }
+                empleadosReporte = aux;
+            }
+            PdfWriter writer = new PdfWriter(directorio+"\\Reporte_"+LocalDate.now()+".pdf");
+            PdfDocument pdf = new PdfDocument(writer);
+            Document documento = new Document(pdf);
+            documento.add(new Paragraph("SISTEMA HOTELERO ").setTextAlignment(TextAlignment.CENTER));
+            documento.add(new Paragraph("REPORTE DE EMPLEADOS").setTextAlignment(TextAlignment.CENTER));
+            documento.add(new Paragraph("Fecha de reporte: "+LocalDate.now().toString()).setTextAlignment(TextAlignment.CENTER));
+
+            Table tabla = new Table(new float[]{1,1,1,1,1,1,1,1});
+            tabla.setWidth(UnitValue.createPercentValue(100));
+            tabla.addHeaderCell("ID");
+            tabla.addHeaderCell("Nombres");
+            tabla.addHeaderCell("Apellidos");
+            tabla.addHeaderCell("Fecha de Nacimiento");
+            tabla.addHeaderCell("Telefono");
+            tabla.addHeaderCell("Dirección");
+            tabla.addHeaderCell("Cedula");
+            tabla.addHeaderCell("Cargo");   
+
+            for (int i = 0; i < empleadosReporte.sizeLista(); i++) {
+                Empleado aux = empleadosReporte.consultarDatoPosicion(i);
+                tabla.addCell(aux.getIdentificacion());
+                tabla.addCell(aux.getNombres());
+                tabla.addCell(aux.getApellidos());
+                tabla.addCell(aux.getFechaNacimiento().toString());
+                tabla.addCell(aux.getTelefono());
+                tabla.addCell(aux.getDireccion());
+                tabla.addCell(aux.getCedula());
+                tabla.addCell(aux.getRol().getCargo());
+            }
+            documento.add(tabla);
+            documento.close();
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

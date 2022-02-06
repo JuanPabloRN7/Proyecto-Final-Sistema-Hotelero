@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="318.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_ReporteEmpleadosController">
+   <children>
+      <Label layoutX="22.0" layoutY="20.0" text="REPORTE DE EMPLEADOS" />
+      <ComboBox fx:id="cbxCargo" layoutX="114.0" layoutY="56.0" prefWidth="150.0" />
+      <Button layoutX="276.0" layoutY="56.0" mnemonicParsing="false" onAction="#generarReporte" text="Generar reporte" />
+      <Label layoutX="22.0" layoutY="60.0" text="Escoger cargo" />
+   </children>
+</AnchorPane>

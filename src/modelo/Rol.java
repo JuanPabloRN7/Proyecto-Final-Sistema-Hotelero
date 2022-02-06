@@ -28,5 +28,11 @@ public class Rol {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
+    @Override
+    public String toString() {
+        return this.cargo;
+    }
+    
     
 }

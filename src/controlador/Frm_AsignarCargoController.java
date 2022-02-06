@@ -8,6 +8,7 @@ package controlador;
 import controlador.daos.EmpleadoDao;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -50,8 +52,7 @@ public class Frm_AsignarCargoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ec.setEmpleados(empleadoDao.listar());
-        cargarTabla(ec.getEmpleados());
+        refrescarTabla();
         cargarFormulario();
         cargarCombo();
     }    
@@ -67,6 +68,12 @@ public class Frm_AsignarCargoController implements Initializable {
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+    
+    @FXML
+    private void refrescarTabla(){
+        ec.setEmpleados(empleadoDao.listar());
+        cargarTabla(ec.getEmpleados());
     }
     
     private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje){
@@ -100,6 +107,25 @@ public class Frm_AsignarCargoController implements Initializable {
             }
         }else{
             cargarTabla(ec.getEmpleados());
+        }
+    }
+    
+    @FXML
+    private void eliminarEmpleado(){
+        if (tblEmpleados.getSelectionModel().getSelectedIndex() != -1) {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("Elminar");
+            alerta.setHeaderText("¿Esta seguro de eliminar el empleado?");
+            alerta.setContentText("Los datos del empleado se borraran despues de confirmar");
+            if(alerta.showAndWait().get() == ButtonType.OK){
+                Empleado empleado = (Empleado)tblEmpleados.getSelectionModel().getSelectedItem();
+                if(empleadoDao.eliminar(empleado.getIdentificacion())){
+                    crearAlerta(Alert.AlertType.INFORMATION, "Informacion", "Empleado eliminado", "El empleado se ha eliminado correctamente");
+                    cargarTabla(empleadoDao.listar());
+                }else{
+                    crearAlerta(Alert.AlertType.ERROR, "Error", "Empleado no eliminado", "El empleado no se ha podido eliminar");
+                };
+            }
         }
     }
     

@@ -11,9 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import lista.controlador.Lista;
-import modelo.Empleado;
 import modelo.Persona;
 
 /**
@@ -84,6 +82,11 @@ public class AdaptadorDaoCliente<T> implements InterfazDao<T> {
             ex.printStackTrace();
         }
         return lista;
+    }
+
+    @Override
+    public boolean modificar(String nombre, String apellido, String telefono, String cargo, String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

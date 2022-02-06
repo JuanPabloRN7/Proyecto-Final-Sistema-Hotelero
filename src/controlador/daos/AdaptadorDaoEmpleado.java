@@ -59,10 +59,11 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
     }
 
     @Override
-    public boolean modificar(String dato, String ID) {
+    public boolean modificar(String nombre, String apellido, String telefono, String cargo, String id) {
         Connection conexion = conexionDB.conectar();
         try {
-            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+dato+"' WHERE IDEmpleado='"+ID+"'");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+cargo+"', SET Telefono = '"+telefono+"', SET Nombres = '"+nombre+"', "
+                    + "SET Apellidos = '"+apellido+"', SET Cargo = '"+cargo+"' WHERE IDEmpleado='"+id+"'");
             int verificacion = ps.executeUpdate();
             ps.close();
             if (verificacion>0) {
@@ -76,6 +77,22 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
         }
     }
     
+    public boolean eliminar(String id){
+        Connection conexion = conexionDB.conectar();
+        try {
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM empleados WHERE IDEmpleado='"+id+"'");
+            int verificacion = ps.executeUpdate();
+            ps.close();
+            if (verificacion>0) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }        
+    }
     
     @Override
     public Lista<T> listar() {
@@ -105,5 +122,10 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             ex.printStackTrace();
         }
         return lista;
+    }
+
+    @Override
+    public boolean modificar(String dato, String ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
