@@ -21,7 +21,6 @@ import javafx.scene.layout.BorderPane;
  * @author Jainer Pinta
  */
 public class Frm_VentanaGeneralController implements Initializable {
-
     private @FXML BorderPane bpZona;
     private @FXML Button btnMA;
     private @FXML Button btnMR;
@@ -42,10 +41,7 @@ public class Frm_VentanaGeneralController implements Initializable {
 
     @FXML
     private void cambiarms(ActionEvent e) {
-        //if (e.getSource() == btms) {
         cargarEscena("/vista/Frm_ModuloServicios.fxml");
-
-        //}
     }
 
     @FXML

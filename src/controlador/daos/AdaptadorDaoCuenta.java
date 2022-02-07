@@ -28,7 +28,7 @@ public class AdaptadorDaoCuenta<T> implements InterfazDao<T>{
         Cuenta cuenta = (Cuenta)dato;
         Connection conexion = conexionDB.conectar();
         try {
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO cuentas(id,indentificacion,clave) VALUE(?,?,?)");
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO cuentas(id,identificacion,clave) VALUE(?,?,?)");
             ps.setLong(1, cuenta.getId());
             ps.setString(2, cuenta.getIdentificacion());
             ps.setString(3, cuenta.getClave());

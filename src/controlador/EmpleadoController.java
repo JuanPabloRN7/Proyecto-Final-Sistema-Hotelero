@@ -122,4 +122,18 @@ public class EmpleadoController extends PersonaController{
             return false;
         }
     }
+    
+    public boolean verificarDisponibiladID(String id){
+        Lista <Empleado> aux = buscarEmpleado(id, "identificacion");
+        for(int i = 0; i < aux.sizeLista(); i++){
+            if(aux.consultarDatoPosicion(i)==null){
+                return false;
+            }else{
+                if(aux.consultarDatoPosicion(i).getIdentificacion().equalsIgnoreCase(id)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

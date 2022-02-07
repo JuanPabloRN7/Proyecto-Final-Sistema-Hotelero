@@ -6,6 +6,7 @@
 package controlador;
 
 import Controlador.ConexionDB;
+import controlador.daos.CuentaDao;
 import controlador.daos.EmpleadoDao;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +20,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import lista.controlador.Lista;
+import modelo.Empleado;
 import modelo.enums.TipoEmpleado;
 
 /**
@@ -29,6 +32,7 @@ import modelo.enums.TipoEmpleado;
 public class Frm_PanelAddEmpleadoController implements Initializable {
     private ConexionDB conexionDB = new ConexionDB();
     private EmpleadoDao empleadoDao = new EmpleadoDao();
+    private CuentaDao cuentaDao = new CuentaDao();
     private PersonaController pc = new PersonaController();
     private EmpleadoController ec = new EmpleadoController();
     
@@ -38,6 +42,7 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
     private @FXML TextField txtDireccion;
     private @FXML TextField txtCedula;
     private @FXML TextField txtID;
+    private @FXML TextField txtClave;
     private @FXML DatePicker txtFecha;
     private @FXML ComboBox cbxCargo;
     private @FXML VBox vboxDatos;
@@ -48,6 +53,7 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ec.setEmpleados(empleadoDao.listar());
         cargarCbxCargo();
     }
     
@@ -77,8 +83,13 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
             empleadoDao.getEmpleado().getRol().setCargo(cbxCargo.getSelectionModel().getSelectedItem().toString());
             empleadoDao.getEmpleado().getRol().setAutorizacion(ec.asignarAutorizacion(cbxCargo.getSelectionModel().getSelectedItem().toString()));
             pc.setPersona(empleadoDao.getEmpleado());
-            if (pc.verificarCedula()) {
+            if (pc.verificarCedula() && ec.verificarDisponibiladID(txtID.getText().trim())) {
                 if (empleadoDao.guardar()) {
+                    if(cbxCargo.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("RECEPCIONISTA") || cbxCargo.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("GERENTE")){
+                        cuentaDao.getCuenta().setIdentificacion(txtID.getText().trim());
+                        cuentaDao.getCuenta().setClave(txtClave.getText().trim());
+                        cuentaDao.guardar();
+                    }
                     crearAlerta(AlertType.INFORMATION, "OK", "Datos guardados", "Los datos se han almacenado correctamente");
                 }else{
                     crearAlerta(AlertType.ERROR, "Error", "Datos no guardados", "Ha surgido un error al guardar los datos");
@@ -109,10 +120,8 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
             }
         }
         if (camposTexto && txtFecha.getValue() != null) {
-            System.out.println("Paso");
             return true;
         }
-        System.out.println("No paso");
         return false;
     }
     
