@@ -47,8 +47,8 @@ public class Frm_VentanaLoginController implements Initializable {
         listarCuentas();
     }    
 
-    private void iniciarsesion() {
-        cargarVentana("/vista/Frm_VentanaGeneral.fxml");
+    private void iniciarsesion(String cargo) {
+        cargarVentana(cargo);
         Stage stage = (Stage) btnacceder.getScene().getWindow();
         stage.close();      
     }
@@ -69,7 +69,7 @@ public class Frm_VentanaLoginController implements Initializable {
             if(cuenta != null){
                 if(validarCredenciales(cuenta.getIdentificacion(), cuenta.getClave())){
                     if(autorizar(cuenta.getIdentificacion())){
-                        iniciarsesion();
+                        iniciarsesion(empleados.busquedaBinaria(cuenta.getIdentificacion(), "identificacion").getRol().getCargo());
                     }else{
                         crearAlerta(Alert.AlertType.ERROR, "Autorizacion", "No autorizado", "El empleado vinculado a la cuenta no se encuentra autorizado para ingresar al sistema");
                     }
@@ -97,15 +97,18 @@ public class Frm_VentanaLoginController implements Initializable {
         return (txtusuario.getText().isEmpty() && txtclave.getText().isEmpty());
     }
     
-    private void cargarVentana(String direccion) {
+    private void cargarVentana(String cargo) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(direccion));
-            Scene escena1 = new Scene(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Frm_VentanaGeneral.fxml"));
+            Parent root = loader.load();
+            Frm_VentanaGeneralController ventana = loader.getController();
+            if(cargo.equalsIgnoreCase("RECEPCIONISTA")){
+                ventana.ocultarMA();   
+            }
             Stage stage = new Stage();
-            stage.setScene(escena1);
-            stage.setTitle("RESERVAS");
+            stage.setScene(new Scene(root));
+            stage.setTitle("SISTEMA HOTELERO");
             stage.show();
-           
         } catch (IOException e) {
             System.out.println("Problema" + e);
         }

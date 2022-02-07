@@ -22,12 +22,9 @@ import javafx.scene.layout.BorderPane;
  */
 public class Frm_VentanaGeneralController implements Initializable {
 
-    private @FXML
-    BorderPane bpZona;
-    private @FXML
-    Button btnMA;
-    @FXML
-    private Button btnMR;
+    private @FXML BorderPane bpZona;
+    private @FXML Button btnMA;
+    private @FXML Button btnMR;
 
     /**
      * Initializes the controller class.
@@ -71,5 +68,10 @@ public class Frm_VentanaGeneralController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void ocultarMA(){
+        btnMA.setDisable(true);
+        btnMA.setVisible(false);
     }
 }
