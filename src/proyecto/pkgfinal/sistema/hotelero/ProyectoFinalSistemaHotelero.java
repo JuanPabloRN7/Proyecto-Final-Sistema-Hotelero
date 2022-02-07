@@ -5,6 +5,7 @@
  */
 package proyecto.pkgfinal.sistema.hotelero;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +34,7 @@ public class ProyectoFinalSistemaHotelero extends Application{
             stage.setScene(escena1);
             stage.setTitle("Sistema Hotelero");
             stage.show();
-        } catch(Exception e){
+        } catch(IOException e){
             e.printStackTrace();
         }        
     }
