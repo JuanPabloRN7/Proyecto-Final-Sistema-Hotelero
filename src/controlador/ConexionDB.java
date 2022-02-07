@@ -15,6 +15,11 @@ import java.sql.SQLException;
  */
 public class ConexionDB {
     Connection conexion;
+    
+    /**
+     * Obtener la conexion con la base de datos
+     * @return Retorna la conexion realizada con la base de datos
+     */
     public Connection conectar() {
         //Cambiar las variables url, user y pwd
         String user = "Specter";

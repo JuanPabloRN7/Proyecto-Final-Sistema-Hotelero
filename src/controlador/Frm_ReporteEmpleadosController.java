@@ -34,6 +34,9 @@ public class Frm_ReporteEmpleadosController implements Initializable {
         cargarCombo();
     }   
     
+    /**
+     * Genera el reporte de empleados en formato pdf.
+     */
     @FXML
     private void generarReporte(){
         String ruta = obtenerRutaGuardado();
@@ -47,12 +50,19 @@ public class Frm_ReporteEmpleadosController implements Initializable {
         }
     }
     
+    /**
+     * Obtener el directorio de guardado para el reporte a traces de un DirectoryChooser
+     * @return Retorna el directorio de guardado.
+     */
     private String obtenerRutaGuardado(){
         DirectoryChooser dc = new DirectoryChooser();
         File directorio = dc.showDialog(new Stage());
         return directorio.getAbsolutePath();
     }
     
+    /**
+     * Carga el ComboBox con los tipos de empleados del Enum TipoEmpleado.
+     */
     private void cargarCombo(){
         cbxCargo.getItems().clear();
         cbxCargo.getItems().add("Todo");
@@ -60,7 +70,14 @@ public class Frm_ReporteEmpleadosController implements Initializable {
             cbxCargo.getItems().add(TipoEmpleado.values()[i]);
         }
     }
-    
+
+    /**
+     * Crea una alerta al usuario.
+     * @param tipo Tipo de alerta.
+     * @param titulo Titulo de la ventana alerta
+     * @param cabecera Cabecera de la ventana alerta.
+     * @param mensaje  Mensaje que se mostrara al usuario.
+     */
      private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje){
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);

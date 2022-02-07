@@ -57,10 +57,16 @@ public class Frm_AsignarCargoController implements Initializable {
         cargarCombo();
     }    
     
+    /**
+     * Carga los ComboBox con los parametros nombres, apellidos, telefono, direccion, cedula e identificacion.
+     */
     private void cargarCombo(){
         cbxParametro.getItems().addAll("Nombres","Apellidos","Telefono","Direccion","Cedula","Identificacion");
     }
     
+    /**
+     * Carga un archivos FXML que contiene el formulario para añadir un empleado en un Pane.
+     */
     private void cargarFormulario(){
         try{
             Pane formulario = FXMLLoader.load(getClass().getResource("/vista/Frm_PanelAddEmpleado.fxml"));
@@ -70,12 +76,22 @@ public class Frm_AsignarCargoController implements Initializable {
         }
     }
     
+    /**
+     * Funcion auxiliar para refrescar el TableView que contiene la lista de empleados.
+     */
     @FXML
     private void refrescarTabla(){
         ec.setEmpleados(empleadoDao.listar());
         cargarTabla(ec.getEmpleados());
     }
     
+    /**
+     * Crea una alerta al usuario.
+     * @param tipo Tipo de alerta.
+     * @param titulo Titulo de la ventana alerta
+     * @param cabecera Cabecera de la ventana alerta.
+     * @param mensaje  Mensaje que se mostrara al usuario.
+     */
     private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje){
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
@@ -84,6 +100,10 @@ public class Frm_AsignarCargoController implements Initializable {
         alerta.showAndWait();
     }
     
+    /**
+     * Carga el TableView con una lista de Empleados
+     * @param lista Lista de tipo de Empleado.
+     */
     private void cargarTabla(Lista<Empleado> lista){
         ObservableList<Empleado> listaFX = FXCollections.observableArrayList();
         for (int i = 0; i < lista.sizeLista(); i++) {
@@ -98,6 +118,9 @@ public class Frm_AsignarCargoController implements Initializable {
         tblEmpleados.getItems().setAll(listaFX);           
     }
     
+    /**
+     * Busca un empleado en la lista de empleados y presenta los resultados en el TableView
+     */
     @FXML
     private void buscarEmpleado(){
         if (!txtCampoBusqueda.getText().isEmpty() && cbxParametro.getSelectionModel().getSelectedIndex()!= -1) {
@@ -110,6 +133,9 @@ public class Frm_AsignarCargoController implements Initializable {
         }
     }
     
+    /**
+     * Elimina un empleado de la base de datos y actualiza la tabla.
+     */
     @FXML
     private void eliminarEmpleado(){
         if (tblEmpleados.getSelectionModel().getSelectedIndex() != -1) {

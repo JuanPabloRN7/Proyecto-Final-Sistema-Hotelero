@@ -23,6 +23,11 @@ public class AdaptadorDaoCuenta<T> implements InterfazDao<T>{
     private ConexionDB conexionDB = new ConexionDB();
     private Lista<T> lista = new Lista<>();
     
+    /**
+     * Guarda la cuenta en la base de datos
+     * @param dato Objeto de tipo Cuenta.
+     * @return Retorna True si la cuenta se a registrado.
+     */
     @Override
     public boolean guardar(T dato) {
         Cuenta cuenta = (Cuenta)dato;
@@ -55,6 +60,10 @@ public class AdaptadorDaoCuenta<T> implements InterfazDao<T>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Obtiene todas las cuentas de la base de datos.
+     * @return Lista de Tipo Cuenta.
+     */
     @Override
     public Lista<T> listar() {
         Statement st = null;

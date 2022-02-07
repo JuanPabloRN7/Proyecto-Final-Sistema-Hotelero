@@ -33,6 +33,10 @@ public class Frm_ModuloAdministrativoController implements Initializable {
         // TODO
     }
     
+    /**
+     * Carga la ventana correspondiente al boton presionado.
+     * @param e Evento de tipo ActionEvent.
+     */
     @FXML
     private void seleccionarVentana(ActionEvent e){
         if (e.getSource() == btnReporte) {
@@ -42,6 +46,10 @@ public class Frm_ModuloAdministrativoController implements Initializable {
         }
     }
     
+    /**
+     * Carga una ventana FXML
+     * @param direccion Directorio del archivo FXML.
+     */
     private void cargarVentana(String direccion){
         try{
             Parent root = FXMLLoader.load(getClass().getResource(direccion));

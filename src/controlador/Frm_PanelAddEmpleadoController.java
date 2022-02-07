@@ -57,6 +57,9 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
         cargarCbxCargo();
     }
     
+    /**
+     * Carga el combo box con los items del enum TipoEmpleado
+     */
     private void cargarCbxCargo(){
         cbxCargo.getItems().clear();
         for (TipoEmpleado empleado : TipoEmpleado.values()) {
@@ -64,12 +67,19 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
         }
     }
     
+    /**
+     * Oculta las opciones para registrar empleados
+     * @param modo False para ocultar opciones de registro de empleados.
+     */
     public void modoEmpleado(boolean modo){
         if (!modo) {
             hboxEmpleado.setVisible(false);
         }
     }
     
+    /**
+     * Añadir un empleado a la base de datos con los datos obtenidos de los campos.
+     */
     @FXML
     private void addEmpleado(){
         if (verificarCampos()) { 
@@ -101,7 +111,14 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
             crearAlerta(AlertType.INFORMATION, "Error", "Campos vacios", "Rellene todos los campos para guardar al empleado");
         }
     }
-
+    
+    /**
+     * Crea una alerta al usuario.
+     * @param tipo Tipo de alerta.
+     * @param titulo Titulo de la ventana alerta
+     * @param cabecera Cabecera de la ventana alerta.
+     * @param mensaje  Mensaje que se mostrara al usuario.
+     */
     private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje){
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
@@ -110,6 +127,10 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
         alerta.showAndWait();
     }
     
+    /**
+     * Verifica si los campos del formulario estan vacios.
+     * @return Retorna False si los campos estan vacios-
+     */
     private boolean verificarCampos(){
         boolean camposTexto = true;
         for (Node nodo : vboxDatos.getChildren()) {

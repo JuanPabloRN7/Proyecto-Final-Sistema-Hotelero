@@ -24,33 +24,59 @@ import modelo.Empleado;
 public class EmpleadoController extends PersonaController{
     private Empleado empleado;
     private Lista<Empleado> empleados;
-
+    
+    /**
+     * Obtiene el empleado del controlador
+     * @return Objeto tipo Empleado
+     */
     public Empleado getEmpleado() {
         if(empleado == null)
             empleado = new Empleado();
         return empleado;
     }
-
+    
+    /**
+     * Setear empleado
+     * @param empleado Objeto tipo empleado 
+     */
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
-
+    
+    /**
+     * Obtener lista de empleados
+     * @return Lista de tipo Empleado
+     */
     public Lista<Empleado> getEmpleados() {
         if(this.empleados == null)
             this.empleados = new Lista<>();
         return this.empleados;
     }
 
+    /**
+     * Setear lista de empleados
+     * @param empleados Lista de tipo Empleado
+     */
     public void setEmpleados(Lista<Empleado> empleados) {
         this.empleados = empleados;
         empleados.setClazz(Empleado.class.getSuperclass());
     }
 
-    
+    /**
+     * Asigna autorizacion a empleados repecionista y gerente
+     * @param cargo Nombre del cargo
+     * @return True si el cargo es recepcionista o gerente
+     */
     public boolean asignarAutorizacion(String cargo){
         return (cargo.equalsIgnoreCase("recepcionista") || cargo.equalsIgnoreCase("gerente"));
     }
     
+    /**
+     * Obtener una lista de empleados que contengan los parametros enviados
+     * @param dato  String dato a buscar en la lista de empleados
+     * @param atributo Atributo del cual se quiere buscar el dato
+     * @return Retorna una lisa de tipo empleado que contengan los parametros enviados.
+     */
     public Lista<Empleado> buscarEmpleado(String dato, String atributo){
         Lista<Empleado> resultadoBusqueda = new Lista();
         resultadoBusqueda.setClazz(Empleado.class.getSuperclass());
@@ -73,6 +99,12 @@ public class EmpleadoController extends PersonaController{
         return resultadoBusqueda;
     }
     
+    /**
+     * Genera un reporte en pdf en un directorio seleccionado
+     * @param cargo Tipo de empleados que contendra el reporte
+     * @param directorio Directorio donde se guardara el pdf.
+     * @return Retorna true si el pdf se ha generado correctamente
+     */
     public boolean generarReporte(String cargo, String directorio){
         try{
             Lista <Empleado> empleadosReporte = empleados;
@@ -123,6 +155,11 @@ public class EmpleadoController extends PersonaController{
         }
     }
     
+    /**
+     * Verfica si un id de empleado ya esta en uso.
+     * @param id El id a verificar.
+     * @return Retorna true si el id esta disponible.
+     */
     public boolean verificarDisponibiladID(String id){
         Lista <Empleado> aux = buscarEmpleado(id, "identificacion");
         for(int i = 0; i < aux.sizeLista(); i++){

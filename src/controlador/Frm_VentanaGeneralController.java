@@ -31,31 +31,43 @@ public class Frm_VentanaGeneralController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-
+    
+    /**
+     * Carga la escena del modulo administrativo.
+     */
     @FXML
-    private void cambiarEscena(ActionEvent e) {
-        if ((Button) e.getSource() == btnMA) {
-            cargarEscena("/vista/Frm_ModuloAdministrativo.fxml");
-        }
+    private void cambiarEscena() {
+        cargarEscena("/vista/Frm_ModuloAdministrativo.fxml");
     }
-
+    
+    /**
+     * Carga la escena del modulo servicios.
+     */
     @FXML
-    private void cambiarms(ActionEvent e) {
+    private void cambiarms() {
         cargarEscena("/vista/Frm_ModuloServicios.fxml");
     }
-
+    
+    /**
+     * Carga la escena del modulo reserva.
+     */
     @FXML
-    private void cambiarEscenaMR(ActionEvent event) {
+    private void cambiarEscenaMR() {
         cargarEscena("/vista/Frm_ModuloReserva.fxml");
     }
     
-     @FXML
-    private void cambiarmr(ActionEvent e){
-            cargarEscena("/vista/Frm_ModuloRecepcion.fxml");  
-
-        
+    /**
+     * Carga la escena del modulo recepcion.
+     */
+    @FXML
+    private void cambiarmr(){
+        cargarEscena("/vista/Frm_ModuloRecepcion.fxml");         
     }
-
+    
+    /**
+     * Carga una escena en la zona centra del BorderPane.
+     * @param direccioneEscena Direccion del archivo FXML.
+     */
     private void cargarEscena(String direccioneEscena) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(direccioneEscena));
         bpZona.getChildren().remove(bpZona.getCenter());
@@ -66,6 +78,9 @@ public class Frm_VentanaGeneralController implements Initializable {
         }
     }
     
+    /**
+     * Oculta el modulo administrativo
+     */
     public void ocultarMA(){
         btnMA.setDisable(true);
         btnMA.setVisible(false);

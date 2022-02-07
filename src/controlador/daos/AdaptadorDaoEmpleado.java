@@ -24,11 +24,20 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
     private ConexionDB conexionDB = new ConexionDB();
     private Lista<T> lista = new Lista<>();
     
+    /**
+     * Setear class a la lista
+     * @param clazz Class del tipo Lista.
+     */
     public AdaptadorDaoEmpleado(Class<T> clazz){
         this.clazz = clazz;
         lista.setClazz(clazz);
     }
     
+    /**
+     * Guardar un empleado en la base de datos.
+     * @param dato Objeto de tipo Empleado
+     * @return Retorna True si los datos se han guardado correctamente.
+     */
     @Override
     public boolean guardar(T dato) {
         Empleado empleado = (Empleado)dato;
@@ -57,7 +66,16 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             return false;
         }        
     }
-
+    
+    /**
+     * Modifica los datos de un empleado en la base de datos
+     * @param nombre Nombre del empleado
+     * @param apellido Apellido del empleado
+     * @param telefono Telefono del empleado
+     * @param cargo Cargo del empleado
+     * @param id ID de empleado que se modificarra
+     * @return Retorna true si se modifica el empleado.
+     */
     @Override
     public boolean modificar(String nombre, String apellido, String telefono, String cargo, String id) {
         Connection conexion = conexionDB.conectar();
@@ -77,6 +95,11 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
         }
     }
     
+    /**
+     * Elimina un empleado de la base de datos.
+     * @param id Id del empleado a eliminar
+     * @return Retorna True si se ha eliminado el empleado.
+     */
     public boolean eliminar(String id){
         Connection conexion = conexionDB.conectar();
         try {
@@ -94,6 +117,10 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
         }        
     }
     
+    /**
+     * Obtiene los empleados de la base de datos
+     * @return Retorna una lista de tipo Empleado.
+     */
     @Override
     public Lista<T> listar() {
         Statement st = null;

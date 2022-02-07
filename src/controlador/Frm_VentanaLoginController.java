@@ -37,7 +37,7 @@ public class Frm_VentanaLoginController implements Initializable {
     private Lista<Cuenta> cuentas;
     
     private @FXML TextField txtusuario;
-    private @FXML PasswordField  txtclave;
+    private @FXML PasswordField txtclave;
     private @FXML Button btnacceder;
     /**
      * Initializes the controller class.
@@ -46,22 +46,32 @@ public class Frm_VentanaLoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         listarCuentas();
     }    
-
+    
+    /**
+     * Carga la ventana general y cierra la de login
+     * @param cargo Cargo del usuario a iniciar sesion.
+     */
     private void iniciarsesion(String cargo) {
         cargarVentana(cargo);
         Stage stage = (Stage) btnacceder.getScene().getWindow();
         stage.close();      
     }
     
+    /**
+     * Carga la lista de empleados y cuentas.
+     */
     private void listarCuentas(){
         empleados = ed.listar();
         cuentas = cd.listar();
         empleados.setClazz(Empleado.class);
         cuentas.setClazz(Cuenta.class);
         empleados.quicksort(0, empleados.sizeLista()-1, "identificacion", Lista.ASCENDENTE);
-        cuentas.quicksort(0, cuentas.sizeLista()-1,"identificaion", Lista.ASCENDENTE);
+        cuentas.quicksort(0, cuentas.sizeLista()-1,"identificacion", Lista.ASCENDENTE);
     }
     
+    /**
+     * Obtener la cuenta que coincide con los campos usuario y contraseña.
+     */
     @FXML
     private void obtenerCuenta(){
         if(!verificarCampos()){
@@ -84,19 +94,38 @@ public class Frm_VentanaLoginController implements Initializable {
         }
     }
     
+    /**
+     * Verifica que el usuario y contraseña coinciden con los encontrados.
+     * @param identifiacion Identificacion del empleado.
+     * @param clave Clave de la cuenta.
+     * @return True si las credenciales coinciden.
+     */
     private boolean validarCredenciales(String identifiacion, String clave){
         return (identifiacion.equals(txtusuario.getText().trim()) && clave.equals(txtclave.getText()));
     }
     
+    /**
+     * Verifica que el empleado este autorizado para ingresar al sistema.
+     * @param identificacion Identificacion del empleado.
+     * @return Retorna true si el empleado esta autorizado.
+     */
     private boolean autorizar(String identificacion){
         Empleado empleado = empleados.busquedaBinaria(identificacion, "identificacion");
         return empleado.getRol().isAutorizacion();
     }
     
+    /**
+     * Verifica si los campos de usuario y clave estan vacios.
+     * @return True si los campos estan vacios.
+     */
     private boolean verificarCampos(){
-        return (txtusuario.getText().isEmpty() && txtclave.getText().isEmpty());
+        return (txtusuario.getText().isEmpty() || txtclave.getText().isEmpty());
     }
     
+    /**
+     * Carga la ventana general
+     * @param cargo Cargo del empleado que inicia sesion.
+     */
     private void cargarVentana(String cargo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/Frm_VentanaGeneral.fxml"));
@@ -113,7 +142,14 @@ public class Frm_VentanaLoginController implements Initializable {
             System.out.println("Problema" + e);
         }
     }
-    
+
+    /**
+     * Crea una alerta al usuario.
+     * @param tipo Tipo de alerta.
+     * @param titulo Titulo de la ventana alerta
+     * @param cabecera Cabecera de la ventana alerta.
+     * @param mensaje  Mensaje que se mostrara al usuario.
+     */    
     private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje){
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
