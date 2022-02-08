@@ -40,8 +40,9 @@ public class Frm_IngresarClienteController implements Initializable {
     //public TextField txclientee;
     private Stage stage;
     public String test;
-    private ClienteDao clienteDao = new ClienteDao();
+    public ClienteDao clienteDao = new ClienteDao();
     private PersonaController pc = new PersonaController();
+    int select;
     /**
      * Initializes the controller class.
      */
