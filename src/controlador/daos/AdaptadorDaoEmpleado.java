@@ -24,11 +24,20 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
     private ConexionDB conexionDB = new ConexionDB();
     private Lista<T> lista = new Lista<>();
     
+    /**
+     * Setear class a la lista
+     * @param clazz Class del tipo Lista.
+     */
     public AdaptadorDaoEmpleado(Class<T> clazz){
         this.clazz = clazz;
         lista.setClazz(clazz);
     }
     
+    /**
+     * Guardar un empleado en la base de datos.
+     * @param dato Objeto de tipo Empleado
+     * @return Retorna True si los datos se han guardado correctamente.
+     */
     @Override
     public boolean guardar(T dato) {
         Empleado empleado = (Empleado)dato;
@@ -57,12 +66,23 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             return false;
         }        
     }
-
+    
+    /**
+     * Modifica  un empleado segun su id de empleado.
+     * @param dato Empleado con nuevos valores
+     * @return True si se la modificado correctamente.
+     */
     @Override
-    public boolean modificar(T dato, int ID) {
+
+    public boolean modificar(T dato, int ID){
+      return false;
+    }
+  
+    public boolean modificar(T dato) {
         Connection conexion = conexionDB.conectar();
+        Empleado empleado = (Empleado)dato;
         try {
-            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+dato+"' WHERE IDEmpleado='"+ID+"'");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+empleado.getRol().getCargo()+"', Telefono = '"+empleado.getTelefono()+"', Nombres = '"+empleado.getNombres()+"', Apellidos = '"+empleado.getApellidos()+"', Direccion = '"+empleado.getDireccion()+"', Cedula = '"+empleado.getCedula()+"', FechaNacimiento = '"+empleado.getFechaNacimiento().toString()+"' WHERE IDEmpleado = '"+empleado.getIdentificacion()+"';");
             int verificacion = ps.executeUpdate();
             ps.close();
             if (verificacion>0) {
@@ -76,7 +96,32 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
         }
     }
     
+    /**
+     * Elimina un empleado de la base de datos.
+     * @param id Id del empleado a eliminar
+     * @return Retorna True si se ha eliminado el empleado.
+     */
+    public boolean eliminar(String id){
+        Connection conexion = conexionDB.conectar();
+        try {
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM empleados WHERE IDEmpleado='"+id+"'");
+            int verificacion = ps.executeUpdate();
+            ps.close();
+            if (verificacion>0) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }        
+    }
     
+    /**
+     * Obtiene los empleados de la base de datos
+     * @return Retorna una lista de tipo Empleado.
+     */
     @Override
     public Lista<T> listar() {
         Statement st = null;
@@ -105,5 +150,10 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
             ex.printStackTrace();
         }
         return lista;
+    }
+
+    @Override
+    public boolean modificar(String dato, String ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

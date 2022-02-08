@@ -10,14 +10,14 @@
    <children>
       <Pane prefHeight="395.0" prefWidth="607.0">
          <children>
-            <Button fx:id="btnAdd" layoutX="104.0" layoutY="241.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="34.0" prefWidth="131.0" text="Añadir Empleado" />
-            <Button layoutX="365.0" layoutY="241.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="34.0" prefWidth="121.0" text="Asignar Cargo" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="95.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="btnReporte" layoutX="278.0" layoutY="172.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="34.0" prefWidth="150.0" text="Reporte de empleados" />
+            <Button layoutX="83.0" layoutY="172.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="34.0" prefWidth="121.0" text="Añadir Empleado" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/icon_Empleado.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="68.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagenes/icon_Cargo.jpg" />
                </image>

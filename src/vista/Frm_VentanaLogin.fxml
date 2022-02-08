@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="600.0" style="-fx-background-color: #323031;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_VentanaLoginController">
+<AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="600.0" style="-fx-background-color: #323031;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_VentanaLoginController">
    <children>
       <AnchorPane layoutX="330.0" layoutY="7.0" prefHeight="390.0" prefWidth="260.0" style="-fx-background-color: ffffff;">
          <children>
@@ -20,7 +20,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnacceder" layoutX="24.0" layoutY="282.0" mnemonicParsing="false" onAction="#iniarsesion" prefHeight="29.0" prefWidth="194.0" style="-fx-background-color: #ebc265;" text="Acceder" textFill="#322303" />
+                  <Button fx:id="btnacceder" layoutX="24.0" layoutY="282.0" mnemonicParsing="false" onAction="#obtenerCuenta" prefHeight="29.0" prefWidth="194.0" style="-fx-background-color: #ebc265;" text="Acceder" textFill="#322303" />
                   <TextField fx:id="txtusuario" layoutX="24.0" layoutY="163.0" prefHeight="25.0" prefWidth="195.0" promptText="Usuario" />
                   <PasswordField fx:id="txtclave" layoutX="24.0" layoutY="211.0" prefHeight="25.0" prefWidth="196.0" promptText="Clave" />
                </children>

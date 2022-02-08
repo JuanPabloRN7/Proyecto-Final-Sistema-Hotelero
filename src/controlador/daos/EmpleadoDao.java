@@ -14,23 +14,42 @@ import modelo.Empleado;
 public class EmpleadoDao extends AdaptadorDaoEmpleado<Empleado>{
     private Empleado empleado;
     
+    /**
+     * Constructor predeterminado.
+     */
     public EmpleadoDao() {
         super(Empleado.class);
     }  
     
+    /**
+     * Obtener empleado de la clase EmpleadoDao
+     * @return Retorna un objeto de tipo Empleado.
+     */
     public Empleado getEmpleado() {
         if(this.empleado == null)
             this.empleado = new Empleado();
         return empleado;
     }
-
+    
+    /**
+     * Setea un objeto de tipo Empleado
+     * @param empleado Objeto de tipo Empleado.
+     */
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
     
+    /**
+     * Guarda el objeto empleado en la base de dato
+     * @return Retorna true si el empleado se ha guardo.
+     */
     public boolean guardar(){
         empleado.setIdPersona(Long.valueOf(listar().sizeLista()+1));
         return guardar(empleado);
+    }
+    
+    public boolean modificar(){
+        return modificar(empleado);
     }
     
 }

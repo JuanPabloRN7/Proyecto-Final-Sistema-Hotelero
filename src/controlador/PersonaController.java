@@ -14,6 +14,10 @@ import modelo.Persona;
 public class PersonaController {
     private Persona persona;
 
+    /**
+     * Obtiene el dato Persona
+     * @return Rertorna un objeto de tipo Persona.
+     */
     public Persona getPersona() {
         if (this.persona == null) {
             this.persona = new Persona();
@@ -21,11 +25,19 @@ public class PersonaController {
         return persona;
     }
 
+    /**
+     * Setear objeto tipo de Persona
+     * @param persona Objeto tipo Persona.
+     */
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+    /**
+     * Algoritmo para verificar el número de cedula
+     * @return Retorna True si la cedula es valida. 
+     */
+    public boolean verificarCedula(){
 
-    public boolean verificarCedula() {
         String cedula = persona.getCedula();
         int sumaTotal = 0;
         for (int i = 0; i < cedula.length() - 1; i++) {

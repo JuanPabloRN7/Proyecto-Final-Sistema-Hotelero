@@ -107,4 +107,9 @@ public class AdaptadorDaoClienterec<T> implements InterfazDao<T>{
         }
         return lista;
     }
+
+    @Override
+    public boolean modificar(T dato) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
