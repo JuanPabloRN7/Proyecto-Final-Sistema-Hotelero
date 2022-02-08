@@ -11,7 +11,8 @@ package modelo;
  */
 public class Evento extends Servicio{
     private String fecha;
-    private String hora;
+    private String Jordana;
+    private Double duracion;
 
     public String getFecha() {
         return fecha;
@@ -21,12 +22,25 @@ public class Evento extends Servicio{
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return hora;
+    public String getJordana() {
+        return Jordana;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setJordana(String Jordana) {
+        this.Jordana = Jordana;
     }
+    
+    public Double getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Double duracion) {
+        this.duracion = duracion;
+    }
+    
+    
+    
+    
+    
     
 }
