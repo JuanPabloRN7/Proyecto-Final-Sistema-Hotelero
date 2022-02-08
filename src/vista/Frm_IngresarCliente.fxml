@@ -77,7 +77,7 @@
             <TableColumn fx:id="columTelefono" prefWidth="117.59991455078125" text="Telefono" />
         </columns>
       </TableView>
-      <Button layoutX="354.0" layoutY="313.0" mnemonicParsing="false" onAction="#seleccionarCliente" prefHeight="26.0" prefWidth="92.0" text="Selecionar" />
+      <Button fx:id="btnseleccionar" layoutX="354.0" layoutY="313.0" mnemonicParsing="false" onAction="#seleccionarCliente" prefHeight="26.0" prefWidth="92.0" text="Selecionar" />
       <TextField fx:id="txtBuscar" layoutX="464.0" layoutY="20.0" prefHeight="26.0" prefWidth="304.0" promptText="Buscar por nombre y apellido" />
       <ComboBox fx:id="cbxcriterio" layoutX="354.0" layoutY="20.0" prefHeight="26.0" prefWidth="110.0" />
       <Button layoutX="768.0" layoutY="19.0" mnemonicParsing="false" onAction="#buscar" prefHeight="26.0" prefWidth="29.0">
