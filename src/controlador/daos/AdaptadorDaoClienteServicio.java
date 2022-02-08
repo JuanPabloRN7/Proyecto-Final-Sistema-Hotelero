@@ -49,16 +49,21 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
     }
 
     @Override
-    public boolean modificar(String dato, String ID) {
+    public boolean modificar(T dato, int ID) {
         try {
+            ServiciosCliente servicios = (ServiciosCliente) dato;
             PreparedStatement pst;
             //Por hacer todavia
-            pst = conexion.prepareStatement("UPDATE asignarservicios SET Cliente = '"+dato+"' WHERE ID='"+ID+"'");
+            pst = conexion.prepareStatement("UPDATE asignarservicios SET Cliente = '"+servicios.getCliente()+"',Tipo = '"+servicios.getNombreServicio()+"',Valor = '"+servicios.getPrecio()+"', Uso = '"+servicios.getUso()+"' WHERE ID='"+ID+"'");
+//            pst.setString(1, servicios.getCliente());
+//            pst.setString(2, servicios.getNombreServicio());
+//            pst.setDouble(3, servicios.getPrecio());
+//            pst.setInt(4, servicios.getUso());
             pst.executeUpdate();
             pst.close();
             return true;
         } catch (Exception e) {
-            System.out.println("Error en el modificado de la base "+e);
+            e.printStackTrace();
             return false;
         }
     }
@@ -84,7 +89,7 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         } catch (Exception e) {
             System.out.println("Error en listar "+e);
         }
-        return lista;
+        return (lista);
     }
     
 }

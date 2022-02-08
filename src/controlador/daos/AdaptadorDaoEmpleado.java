@@ -59,7 +59,7 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
     }
 
     @Override
-    public boolean modificar(String dato, String ID) {
+    public boolean modificar(T dato, int ID) {
         Connection conexion = conexionDB.conectar();
         try {
             PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+dato+"' WHERE IDEmpleado='"+ID+"'");

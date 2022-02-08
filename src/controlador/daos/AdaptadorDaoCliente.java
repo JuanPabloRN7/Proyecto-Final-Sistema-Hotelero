@@ -36,13 +36,13 @@ public class AdaptadorDaoCliente<T> implements InterfazDao<T> {
         Persona persona = (Persona) dato;
         Connection conexion = conexionDB.conectar();
         try {
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO clientes(idCliente,Nombres,Apellidos,Cedula,Direccion,Telefono) VALUE(?,?,?,?,?,?)");
-            ps.setLong(1, persona.getIdPersona());
-            ps.setString(2, persona.getNombres());
-            ps.setString(3, persona.getApellidos());
-            ps.setString(4, persona.getCedula());
-            ps.setString(5, persona.getDireccion());
-            ps.setString(6, persona.getTelefono());
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO clientes(Nombres,Apellidos,Cedula,Direccion,Telefono) VALUE(?,?,?,?,?)");
+            //ps.setLong(1, persona.getIdPersona());
+            ps.setString(1, persona.getNombres());
+            ps.setString(2, persona.getApellidos());
+            ps.setString(3, persona.getCedula());
+            ps.setString(4, persona.getDireccion());
+            ps.setString(5, persona.getTelefono());
             int verificacion = ps.executeUpdate();
             ps.close();
             if (verificacion > 0) {
@@ -57,7 +57,7 @@ public class AdaptadorDaoCliente<T> implements InterfazDao<T> {
     }
 
     @Override
-    public boolean modificar(String dato, String ID) {
+    public boolean modificar(T dato, int ID) {
         return false;
     }
 

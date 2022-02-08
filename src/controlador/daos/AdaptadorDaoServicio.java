@@ -47,10 +47,11 @@ public class AdaptadorDaoServicio<T> implements InterfazDao<T>{
     }
 
     @Override
-    public boolean modificar(String dato, String ID) {
+    public boolean modificar(T dato, int ID) {
+        Servicio servicio = (Servicio) dato;
         try {
             PreparedStatement pst;
-            pst = conexion.prepareStatement("UPDATE servicios SET Cliente = '"+dato+"' WHERE ID='"+ID+"'");
+            pst = conexion.prepareStatement("UPDATE servicios SET Tipo = '"+servicio.getNombreServicio()+"', Precio = '"+servicio.getPrecio()+"' WHERE ID='"+ID+"'");
             pst.executeUpdate();
             pst.close();
             return true;
