@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_IRController">
+   <left>
+      <AnchorPane prefHeight="476.0" prefWidth="155.0" style="-fx-background-color: #142C4B;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="19.0" layoutY="65.0" text="Ingresar Reserva" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="52.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/reservado.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="41.0" layoutY="257.0" prefHeight="18.0" prefWidth="73.0" text="OPCIONES" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="26.0" layoutY="287.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="Eliminar" />
+            <Button layoutX="24.0" layoutY="339.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Modificar" />
+            <Button layoutX="23.0" layoutY="389.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Factura" />
+            <Button layoutX="13.0" layoutY="448.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="78.0" text="Regresar" />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="494.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="24.0" prefHeight="18.0" prefWidth="62.0" text="Cliente" />
+            <Label layoutX="14.0" layoutY="79.0" prefHeight="18.0" prefWidth="62.0" text="Habitacion" />
+            <Label layoutX="14.0" layoutY="136.0" prefHeight="18.0" prefWidth="102.0" text="Fecha de Reserva" />
+            <Label layoutX="14.0" layoutY="194.0" prefHeight="18.0" prefWidth="62.0" text="Costo" />
+            <TextField fx:id="txtCliente" layoutX="14.0" layoutY="42.0" prefHeight="26.0" prefWidth="202.0" />
+            <TextField fx:id="txtHabitacion" layoutX="15.0" layoutY="97.0" prefHeight="26.0" prefWidth="197.0" />
+            <TextField fx:id="txtCosto" layoutX="16.0" layoutY="211.0" prefHeight="26.0" prefWidth="190.0" />
+            <DatePicker fx:id="jdFechaReserva" layoutX="15.0" layoutY="154.0" prefHeight="26.0" prefWidth="195.0" />
+            <Label layoutX="325.0" layoutY="24.0" text="Fecha de entrada" />
+            <Label layoutX="330.0" layoutY="79.0" text="Fecha de salida" />
+            <TableView fx:id="tblTabla" layoutX="12.0" layoutY="292.0" prefHeight="174.0" prefWidth="594.0">
+              <columns>
+                <TableColumn fx:id="colCliente" prefWidth="110.39998245239258" text="Cliente" />
+                  <TableColumn fx:id="colHabitacion" prefWidth="123.199951171875" text="Habitacion" />
+                  <TableColumn fx:id="colFechaReserva" prefWidth="72.80003356933594" text="Fecha Reserva" />
+                  <TableColumn fx:id="colFechaEntrada" prefWidth="100.0" text="Fecha entrada" />
+                  <TableColumn fx:id="colFechaSalida" prefWidth="107.20001220703125" text="Fecha salida" />
+                  <TableColumn fx:id="colCosto" prefWidth="81.5999755859375" text="Costo" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnClente" layoutX="220.0" layoutY="43.0" mnemonicParsing="false" onAction="#seleccionarCliente" text="....." />
+            <Button fx:id="btnHabitacion" layoutX="220.0" layoutY="98.0" mnemonicParsing="false" onAction="#seleccionarHabitacion" text="...." />
+            <Label layoutX="323.0" layoutY="136.0" prefHeight="18.0" prefWidth="94.0" text="Servicios" />
+            <DatePicker fx:id="jdfechaEntrada" layoutX="324.0" layoutY="42.0" prefHeight="26.0" prefWidth="186.0" />
+            <DatePicker fx:id="jdFechaSalida" layoutX="321.0" layoutY="97.0" prefHeight="26.0" prefWidth="191.0" />
+            <ComboBox fx:id="cbxservicios" layoutX="319.0" layoutY="154.0" prefHeight="26.0" prefWidth="182.0" />
+            <Button fx:id="btnReserva" layoutX="323.0" layoutY="211.0" mnemonicParsing="false" onAction="#guardarReserva" prefHeight="26.0" prefWidth="73.0" text="Guardar" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
