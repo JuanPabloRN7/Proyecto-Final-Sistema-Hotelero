@@ -93,6 +93,10 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         limpiar();
     }
 
+    /**
+     * Se ingresa los datos a la tabla o se modifica segun sea el caso
+     * @param event 
+     */
     @FXML
     private void Ingresar(ActionEvent event) {
         if (validar()) {
@@ -129,6 +133,13 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         mostarPrecio();
     }
 
+    /**
+     * 
+     * @param tipo
+     * @param titulo
+     * @param cabecera
+     * @param mensaje 
+     */
     private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje) {
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
@@ -137,10 +148,17 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         alerta.showAndWait();
     }
 
+    /**
+     * Valida si los campos no estan vacios
+     * @return 
+     */
     private boolean validar() {
         return txcliente.getText() != null && txPrecio.getText().trim().length() > 0 && !cbServicio.getSelectionModel().isEmpty() && !cbUso.getSelectionModel().isEmpty();
     }
 
+    /**
+     * Limpia el Objeto y los Tx, y cara la Tabla
+     */
     private void limpiar() {
         csdao.setServicios(null);
         cargarTabla();
@@ -148,6 +166,9 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         txPrecio.setText("");
     }
 
+    /**
+     * carga la Tabla
+     */
     private void cargarTabla() {
         Lista<ServiciosCliente> lista = new Lista<>();
         lista = csdao.listar();
@@ -163,6 +184,10 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         TablaSer.setItems(listaFX);
     }
 
+    /**
+     * Abre la ventana Cliente donde se recoge el nombre de los clientes y los setea en un texfield
+     * @param event 
+     */
     @FXML
     public void seleccionarCliente(ActionEvent event) {
         try {
@@ -181,6 +206,9 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         }
     }
 
+    /**
+     * Muestra los servicios que estan en la base de datos
+     */
     private void mostarServicios() {
         String sql = "SELECT servicios.Tipo FROM `servicios`";
         try {
@@ -196,6 +224,9 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         }
     }
 
+    /**
+     * Muestra el precio de cada servicio de la base de datos
+     */
     private void mostarPrecio() {
         String sql = "SELECT servicios.Tipo FROM `servicios`";
         String sql2 = "SELECT servicios.Tipo,servicios.Precio FROM `servicios`";
@@ -214,15 +245,27 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         }
     }
 
+    /**
+     * Añade los numeros de horas para el combo box de Uso
+     */
     private void mostarUso() {
         Double arreglo[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0};
         cbUso.getItems().addAll(arreglo);
     }
 
+    /**
+     * Calcula el Precio por las horas
+     * @return Precio
+     */
     private double calcularPrecio() {
         return cbUso.getSelectionModel().getSelectedItem() * Double.parseDouble(txPrecio.getText());
     }
 
+    /**
+     * Carga la Ventana
+     * @param direccion de Ventana
+     * @return 
+     */
     public Stage cargarVentana(String direccion) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(direccion));
@@ -237,6 +280,9 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         }
     }
 
+    /**
+     * Busca un elemento en especifico 
+     */
     @FXML
     public void buscar() {
         int select = cbbuscar.getSelectionModel().getSelectedIndex();
@@ -281,6 +327,10 @@ public class Frm_IngresarClienteServicioController implements Initializable {
         buscar();
     }
 
+    /**
+     * Setea la fila seleccionada todos sus datos a los respectivos TextField
+     * @param event 
+     */
     @FXML
     private void modificar(ActionEvent event) {
         fila = TablaSer.getSelectionModel().getSelectedIndex();
