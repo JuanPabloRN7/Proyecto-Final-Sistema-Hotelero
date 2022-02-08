@@ -29,6 +29,11 @@ public class AdaptadorDaoServicio<T> implements InterfazDao<T>{
         lista.setClazz(clazz);
     }
     
+    /**
+     * Guarda los datos del Objeto en la base de datos
+     * @param dato
+     * @return true si se ha guardado correctamente
+     */
     @Override
     public boolean guardar(T dato) {
         Servicio servicio = (Servicio) dato;
@@ -46,6 +51,12 @@ public class AdaptadorDaoServicio<T> implements InterfazDao<T>{
         }
     }
 
+    /**
+     * Modifica los datos de la base de datos grcias a una llave ID
+     * @param dato
+     * @param ID
+     * @return true si se ha guardado correctamente
+     */
     @Override
     public boolean modificar(T dato, int ID) {
         Servicio servicio = (Servicio) dato;
@@ -61,6 +72,10 @@ public class AdaptadorDaoServicio<T> implements InterfazDao<T>{
         }
     }
 
+    /**
+     * Guarda los datos de la base de datos en la lista de Servicios
+     * @return Lista de Servicios 
+     */
     @Override
     public Lista<T> listar() {
         Statement st = null;
