@@ -29,6 +29,11 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         lista.setClazz(clazz);
     }
     
+    /**
+     * Inserta los datos en la base de datos
+     * @param dato
+     * @return true si se ha guardado correctamente
+     */
     @Override
     public boolean guardar(T dato) {
         ServiciosCliente servicios = (ServiciosCliente) dato;
@@ -48,21 +53,31 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         }
     }
 
+    /**
+     * Modifica los datos de la base de datos gracias a una llave Id
+     * @param dato
+     * @param ID
+     * @return true si se ha guardado correctamente
+     */
     @Override
-    public boolean modificar(String dato, String ID) {
+    public boolean modificar(T dato, int ID) {
         try {
+            ServiciosCliente servicios = (ServiciosCliente) dato;
             PreparedStatement pst;
-            //Por hacer todavia
-            pst = conexion.prepareStatement("UPDATE asignarservicios SET Cliente = '"+dato+"' WHERE ID='"+ID+"'");
+            pst = conexion.prepareStatement("UPDATE asignarservicios SET Cliente = '"+servicios.getCliente()+"',Tipo = '"+servicios.getNombreServicio()+"',Valor = '"+servicios.getPrecio()+"', Uso = '"+servicios.getUso()+"' WHERE ID='"+ID+"'");
             pst.executeUpdate();
             pst.close();
             return true;
         } catch (Exception e) {
-            System.out.println("Error en el modificado de la base "+e);
+            e.printStackTrace();
             return false;
         }
     }
 
+    /**
+     * Guarda los datos de la base de datos en la lista de Servicios Clientes
+     * @return Lista de Servicios CLientes
+     */
     @Override
     public Lista<T> listar() {
         Statement st = null;
@@ -84,7 +99,7 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         } catch (Exception e) {
             System.out.println("Error en listar "+e);
         }
-        return lista;
+        return (lista);
     }
 
     @Override

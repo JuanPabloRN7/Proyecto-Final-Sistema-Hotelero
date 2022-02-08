@@ -11,22 +11,60 @@ package modelo;
  */
 public class Evento extends Servicio{
     private String fecha;
-    private String hora;
+    private String Jordana;
+    private Double duracion;
 
+    /**
+     *  
+     * @return Retorna la Fecha
+     */
     public String getFecha() {
         return fecha;
     }
 
+    /**
+     * 
+     * @param fecha 
+     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return hora;
+    /**
+     * 
+     * @return String Jornada
+     */
+    public String getJordana() {
+        return Jordana;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    /**
+     * 
+     * @param Jordana 
+     */
+    public void setJordana(String Jordana) {
+        this.Jordana = Jordana;
     }
+    
+    /**
+     * 
+     * @return La Duracion
+     */
+    public Double getDuracion() {
+        return duracion;
+    }
+
+    /**
+     * 
+     * @param duracion 
+     */
+    public void setDuracion(Double duracion) {
+        this.duracion = duracion;
+    }
+    
+    
+    
+    
+    
     
 }

@@ -198,6 +198,7 @@ public class Lista <T> implements Serializable{
         }
     }
     
+    
     public boolean modificarPorPos(T dato, int pos){
         if (!estaVacias() && (pos<=sizeLista()-1) && pos>=0) {
             Nodo iterador = getCabecera();
@@ -215,8 +216,8 @@ public class Lista <T> implements Serializable{
         return false;
     }
     
-    public Field getField(String nombre){
-        for (Field field: clazz.getDeclaredFields()) {
+    private Field getField(String nombre) {
+        for (Field field : clazz.getDeclaredFields()) {
             if (field.getName().equalsIgnoreCase(nombre)) {
                 field.setAccessible(true);
                 return field;
@@ -233,7 +234,7 @@ public class Lista <T> implements Serializable{
 //        }
 //    }
     
-    private Object value(T dato, String atributo) throws Exception{
+    public Object value(T dato, String atributo) throws Exception {
         return getField(atributo).get(dato);
     }
     

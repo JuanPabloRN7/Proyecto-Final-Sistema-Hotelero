@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_ModuloServiciosController">
    <children>
@@ -14,7 +15,23 @@
             <Image url="@../imagenes/mejorar-el-servicio-hotelero-1020x680.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="boton" layoutX="108.0" layoutY="244.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="55.0" prefWidth="118.0" text="Ingresar Servicio" />
-      <Button layoutX="361.0" layoutY="244.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="55.0" prefWidth="132.0" text="Servicio al Cliente" />
+      <Button fx:id="boton" layoutX="108.0" layoutY="244.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="55.0" prefWidth="132.0" style="-fx-background-color: #000000;" text="Ingresar Servicio" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnServicioCliente" alignment="BASELINE_LEFT" layoutX="341.0" layoutY="240.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="62.0" prefWidth="166.0" style="-fx-background-color: #000000;" text="Servicio al Cliente" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <ImageView fitHeight="32.0" fitWidth="81.0" layoutX="466.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/cliente.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btneventos" layoutX="231.0" layoutY="324.0" mnemonicParsing="false" onAction="#seleccionarVentana" prefHeight="55.0" prefWidth="132.0" style="-fx-background-color: #000000;" text="Eventos" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

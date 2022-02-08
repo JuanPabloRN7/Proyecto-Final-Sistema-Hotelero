@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_EventosController">
+   <children>
+      <Label prefHeight="498.0" prefWidth="736.0" style="-fx-background-color: #D2BC97;" />
+      <Label layoutX="236.0" layoutY="14.0" prefHeight="34.0" prefWidth="144.0" text="EVENTOS">
+         <font>
+            <Font name="Centaur" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="65.0" prefHeight="33.0" prefWidth="42.0" text="TIPO">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="117.0" prefHeight="26.0" prefWidth="83.0" text="JORNADA">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbJornada" layoutX="104.0" layoutY="117.0" onAction="#ActionJornada" prefHeight="26.0" prefWidth="133.0" />
+      <ComboBox fx:id="cbTipo" layoutX="100.0" layoutY="69.0" prefHeight="26.0" prefWidth="134.0" />
+      <DatePicker fx:id="txtFecha" layoutX="336.0" layoutY="69.0" prefHeight="26.0" prefWidth="155.0" />
+      <Label layoutX="279.0" layoutY="64.0" prefHeight="34.0" prefWidth="70.0" text="FECHA">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="44.0" fitWidth="56.0" layoutX="380.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/evento.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="303.0" layoutY="149.0" prefHeight="34.0" prefWidth="106.0" text="HORA INICIO">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="448.0" layoutY="149.0" prefHeight="34.0" prefWidth="83.0" text="HORA FIN">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="TablaEve" layoutX="29.0" layoutY="236.0" prefHeight="247.0" prefWidth="646.0">
+         <columns>
+            <TableColumn fx:id="colID" prefWidth="51.20001220703125" text="Id" />
+            <TableColumn fx:id="colTipoEvento" prefWidth="167.20001220703125" text="Tipo de Evento" />
+            <TableColumn fx:id="colPrecio" prefWidth="100.79998779296875" text="Precio" />
+            <TableColumn fx:id="colJornada" prefWidth="106.4000244140625" text="Jornada" />
+            <TableColumn fx:id="colFecha" prefWidth="122.39996337890625" text="Fecha" />
+            <TableColumn fx:id="colDuracion" prefWidth="96.800048828125" text="Duración" />
+         </columns>
+      </TableView>
+      <Label layoutX="21.0" layoutY="181.0" prefHeight="26.0" prefWidth="83.0" text="PRECIO">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txcliente" layoutX="335.0" layoutY="117.0" prefHeight="26.0" prefWidth="134.0" />
+      <ImageView fitHeight="111.0" fitWidth="179.0" layoutX="555.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/pexels-salo-al-16408.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="266.0" layoutY="113.0" prefHeight="34.0" prefWidth="83.0" text="CLIENTE">
+         <font>
+            <Font name="Centaur" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txPrecio" layoutX="103.0" layoutY="181.0" prefHeight="26.0" prefWidth="134.0" />
+      <Button fx:id="btnselect" layoutX="479.0" layoutY="117.0" mnemonicParsing="false" text="SELECT">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btIngresar" layoutX="575.0" layoutY="183.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: #000000;" text="INGRESAR" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="cbInicio" layoutX="306.0" layoutY="181.0" prefHeight="26.0" prefWidth="92.0" />
+      <ComboBox fx:id="cbFin" layoutX="433.0" layoutY="181.0" prefHeight="26.0" prefWidth="92.0" />
+   </children>
+</AnchorPane>

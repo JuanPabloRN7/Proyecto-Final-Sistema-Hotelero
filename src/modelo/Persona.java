@@ -12,6 +12,7 @@ import java.time.LocalDate;
  * @author Jainer Pinta
  */
 public class Persona {
+    //probando
     private Long idPersona;
     private String nombres;
     private String apellidos;

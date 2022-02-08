@@ -22,39 +22,45 @@ import javafx.stage.Stage;
  *
  * @author Usuario
  */
-
 public class Frm_ModuloServiciosController implements Initializable {
 
-    private @FXML Button boton;
+    private @FXML
+    Button boton;
+    @FXML
+    private Button btnServicioCliente;
+    @FXML
+    private Button btneventos;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }   
-    
-     @FXML
-    private void seleccionarVentana(ActionEvent e){
+    }
+
+    @FXML
+    private void seleccionarVentana(ActionEvent e) {
         if (e.getSource() == boton) {
             cargarVentana("/vista/Frm_IngresarServicio.fxml");
-        }
-        else{
+        } else if (e.getSource() == btnServicioCliente) {
             cargarVentana("/vista/Frm_IngresarClienteServicio.fxml");
+        } else if (e.getSource() == btneventos) {
+            cargarVentana("/vista/Frm_Eventos.fxml");
         }
     }
-    
-    private void cargarVentana(String direccion){
-        try{
+
+    private void cargarVentana(String direccion) {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource(direccion));
             Scene escena1 = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(escena1);
             stage.setTitle("SERVICIOS");
             stage.show();
-        }catch(IOException e){
-            System.out.println("Problema"+e);
-        } 
+        } catch (IOException e) {
+            System.out.println("Problema" + e);
+        }
     }
-    
+
 }

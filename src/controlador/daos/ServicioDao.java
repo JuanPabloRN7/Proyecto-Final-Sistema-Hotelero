@@ -19,18 +19,30 @@ public class ServicioDao extends AdaptadorDaoServicio<Servicio>{
         super(Servicio.class);
     }
 
+    /**
+     * 
+     * @return Servicio
+     */
     public Servicio getServicio() {
         if(servicio == null)
             servicio = new Servicio();
         return servicio;
     }
 
+    /**
+     * 
+     * @param servicio 
+     */
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
     
+    /**
+     * 
+     * @return True si guarda correctamente
+     */
     public boolean guardar(){
-        //servicio.setIdServicio(Long.valueOf(listar().sizeLista()+1));
+       servicio.setIdServicio(Long.valueOf(listar().sizeLista()+1));
         return guardar(servicio);
     }
 }

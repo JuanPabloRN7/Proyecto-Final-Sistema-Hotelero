@@ -13,18 +13,34 @@ public class ServiciosCliente extends Servicio{
     private String cliente;
     private int uso;
 
+    /**
+     * 
+     * @return Cliente
+     */
     public String getCliente() {
         return cliente;
     }
 
+    /**
+     * 
+     * @param cliente 
+     */
     public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
+    /**
+     * 
+     * @return Uso
+     */
     public int getUso() {
         return uso;
     }
 
+    /**
+     * 
+     * @param uso 
+     */
     public void setUso(int uso) {
         this.uso = uso;
     }

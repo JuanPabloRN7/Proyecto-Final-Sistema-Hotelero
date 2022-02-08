@@ -73,6 +73,11 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
      * @return True si se la modificado correctamente.
      */
     @Override
+
+    public boolean modificar(T dato, int ID){
+      return false;
+    }
+  
     public boolean modificar(T dato) {
         Connection conexion = conexionDB.conectar();
         Empleado empleado = (Empleado)dato;

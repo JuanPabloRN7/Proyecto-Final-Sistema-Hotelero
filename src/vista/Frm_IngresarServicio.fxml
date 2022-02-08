@@ -10,16 +10,26 @@
 
 <AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_IngresarServicioController">
    <children>
+      <Label layoutX="-5.0" layoutY="-4.0" prefHeight="471.0" prefWidth="702.0" style="-fx-background-color: #D2BC97;" />
       <TextField fx:id="txServicio" layoutX="115.0" layoutY="83.0" />
-      <Label layoutX="37.0" layoutY="82.0" prefHeight="26.0" prefWidth="66.0" text="Nombre" />
-      <Label layoutX="37.0" layoutY="135.0" prefHeight="36.0" prefWidth="48.0" text="Precio" />
-      <TextField fx:id="txPrecio" layoutX="115.0" layoutY="140.0" />
-      <Label layoutX="265.0" layoutY="14.0" prefHeight="26.0" prefWidth="122.0" text="SERVICIOS" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <Label layoutX="37.0" layoutY="82.0" prefHeight="26.0" prefWidth="66.0" text="Nombre">
          <font>
-            <Font name="Arial" size="21.0" />
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="37.0" layoutY="135.0" prefHeight="36.0" prefWidth="48.0" text="Precio">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txPrecio" layoutX="115.0" layoutY="140.0" />
+      <Label layoutX="265.0" layoutY="25.0" prefHeight="26.0" prefWidth="122.0" text="SERVICIOS" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="397.0" layoutY="109.0" mnemonicParsing="false" onAction="#ingresarServicio" prefHeight="26.0" prefWidth="122.0" text="Ingresar Servicios" />
+      <Button layoutX="387.0" layoutY="78.0" mnemonicParsing="false" onAction="#ingresarServicio" prefHeight="36.0" prefWidth="139.0" style="-fx-background-color: #000000;" text="Ingresar Servicios" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
       <TableView fx:id="Tabla" layoutX="103.0" layoutY="202.0" prefHeight="206.0" prefWidth="486.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="75.20001983642578" text="Id" />
@@ -27,5 +37,10 @@
             <TableColumn fx:id="colPrecio" prefWidth="196.79995727539062" text="Precio" />
         </columns>
       </TableView>
+      <Button fx:id="btnmodificar" layoutX="387.0" layoutY="140.0" mnemonicParsing="false" onAction="#modificarServicio" prefHeight="36.0" prefWidth="139.0" style="-fx-background-color: #000000;" text="Modificar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
