@@ -71,6 +71,10 @@ public class Frm_EventosController implements Initializable {
         cbJornada.setItems(listacbx);
     }
 
+    /**
+     * Se agrega las horas a los combo box segun sea la jornada
+     * @param event 
+     */
     @FXML
     private void ActionJornada(ActionEvent event) {
         ObservableList listacbx;
