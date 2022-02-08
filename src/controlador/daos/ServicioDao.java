@@ -30,7 +30,7 @@ public class ServicioDao extends AdaptadorDaoServicio<Servicio>{
     }
     
     public boolean guardar(){
-        //servicio.setIdServicio(Long.valueOf(listar().sizeLista()+1));
+       servicio.setIdServicio(Long.valueOf(listar().sizeLista()+1));
         return guardar(servicio);
     }
 }
