@@ -14,7 +14,7 @@ import lista.controlador.Lista;
  */
 public interface InterfazDao<T> {
     public boolean guardar(T dato);
-    public boolean modificar(String dato, String ID);
+    public boolean modificar(T dato, int ID);
     public Lista<T> listar();
     
 }
