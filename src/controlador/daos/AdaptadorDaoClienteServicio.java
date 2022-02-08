@@ -29,6 +29,11 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         lista.setClazz(clazz);
     }
     
+    /**
+     * Inserta los datos en la base de datos
+     * @param dato
+     * @return true si se ha guardado correctamente
+     */
     @Override
     public boolean guardar(T dato) {
         ServiciosCliente servicios = (ServiciosCliente) dato;
@@ -48,17 +53,18 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         }
     }
 
+    /**
+     * Modifica los datos de la base de datos gracias a una llave Id
+     * @param dato
+     * @param ID
+     * @return true si se ha guardado correctamente
+     */
     @Override
     public boolean modificar(T dato, int ID) {
         try {
             ServiciosCliente servicios = (ServiciosCliente) dato;
             PreparedStatement pst;
-            //Por hacer todavia
             pst = conexion.prepareStatement("UPDATE asignarservicios SET Cliente = '"+servicios.getCliente()+"',Tipo = '"+servicios.getNombreServicio()+"',Valor = '"+servicios.getPrecio()+"', Uso = '"+servicios.getUso()+"' WHERE ID='"+ID+"'");
-//            pst.setString(1, servicios.getCliente());
-//            pst.setString(2, servicios.getNombreServicio());
-//            pst.setDouble(3, servicios.getPrecio());
-//            pst.setInt(4, servicios.getUso());
             pst.executeUpdate();
             pst.close();
             return true;
@@ -68,6 +74,10 @@ public class AdaptadorDaoClienteServicio<T> implements InterfazDao<T>{
         }
     }
 
+    /**
+     * Guarda los datos de la base de datos en la lista de Servicios Clientes
+     * @return Lista de Servicios CLientes
+     */
     @Override
     public Lista<T> listar() {
         Statement st = null;
