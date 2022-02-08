@@ -6,27 +6,28 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
  * @author pablo
  */
 public class Reservacion {
-    private Long idReservacion;
+    private Long id_reservacion;
     private Long id_persona;
     private Long id_detalleFactura;
+    private Long id_habitacion;
     private LocalDate fecha;
-    private LocalDate fecha_inicio;
-    private LocalDate fecha_final;
-    private Double subtotal;
-    private Double totalAPagar;
+    private LocalDate fecha_entrada;
+    private LocalDate fecha_salida;
+    private Double costoTotal;
 
-    public Long getIdReservacion() {
-        return idReservacion;
+    public Long getId_reservacion() {
+        return id_reservacion;
     }
 
-    public void setIdReservacion(Long idReservacion) {
-        this.idReservacion = idReservacion;
+    public void setId_reservacion(Long id_reservacion) {
+        this.id_reservacion = id_reservacion;
     }
 
     public Long getId_persona() {
@@ -45,6 +46,14 @@ public class Reservacion {
         this.id_detalleFactura = id_detalleFactura;
     }
 
+    public Long getId_habitacion() {
+        return id_habitacion;
+    }
+
+    public void setId_habitacion(Long id_habitacion) {
+        this.id_habitacion = id_habitacion;
+    }
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -53,36 +62,30 @@ public class Reservacion {
         this.fecha = fecha;
     }
 
-    public LocalDate getFecha_inicio() {
-        return fecha_inicio;
+    public LocalDate getFecha_entrada() {
+        return fecha_entrada;
     }
 
-    public void setFecha_inicio(LocalDate fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public void setFecha_entrada(LocalDate fecha_entrada) {
+        this.fecha_entrada = fecha_entrada;
     }
 
-    public LocalDate getFecha_final() {
-        return fecha_final;
+    public LocalDate getFecha_salida() {
+        return fecha_salida;
     }
 
-    public void setFecha_final(LocalDate fecha_final) {
-        this.fecha_final = fecha_final;
+    public void setFecha_salida(LocalDate fecha_salida) {
+        this.fecha_salida = fecha_salida;
     }
 
-    public Double getSubtotal() {
-        return subtotal;
+    public Double getCostoTotal() {
+        return costoTotal;
     }
 
-    public void setSubtotal(Double subtotal) {
-        this.subtotal = subtotal;
+    public void setCostoTotal(Double costoTotal) {
+        this.costoTotal = costoTotal;
     }
 
-    public Double getTotalAPagar() {
-        return totalAPagar;
-    }
-
-    public void setTotalAPagar(Double totalAPagar) {
-        this.totalAPagar = totalAPagar;
-    }
+    
 
 }
