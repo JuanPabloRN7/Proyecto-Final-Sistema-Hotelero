@@ -25,7 +25,7 @@ public class Servicio {
     /**
      * 
      * @param nombreServicio 
-     */
+     */ 
     public void setNombreServicio(String nombreServicio) {
         this.nombreServicio = nombreServicio;
     }
