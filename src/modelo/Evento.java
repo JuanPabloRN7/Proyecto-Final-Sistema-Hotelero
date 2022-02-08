@@ -14,26 +14,50 @@ public class Evento extends Servicio{
     private String Jordana;
     private Double duracion;
 
+    /**
+     * @param  
+     * @return Retorna la Fecha
+     */
     public String getFecha() {
         return fecha;
     }
 
+    /**
+     * 
+     * @param fecha 
+     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     * 
+     * @return String Jornada
+     */
     public String getJordana() {
         return Jordana;
     }
 
+    /**
+     * 
+     * @param Jordana 
+     */
     public void setJordana(String Jordana) {
         this.Jordana = Jordana;
     }
     
+    /**
+     * 
+     * @return La Duracion
+     */
     public Double getDuracion() {
         return duracion;
     }
 
+    /**
+     * 
+     * @param duracion 
+     */
     public void setDuracion(Double duracion) {
         this.duracion = duracion;
     }
