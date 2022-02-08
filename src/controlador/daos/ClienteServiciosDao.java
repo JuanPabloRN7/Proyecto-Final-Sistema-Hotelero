@@ -20,20 +20,38 @@ public class ClienteServiciosDao extends AdaptadorDaoClienteServicio<ServiciosCl
         super(ServiciosCliente.class);
     }
 
+    /**
+     * 
+     * @return servicios
+     */
     public ServiciosCliente getServicios() {
         if(servicios == null)
             servicios = new ServiciosCliente();
         return servicios;
     }
 
+    /**
+     * 
+     * @param servicio 
+     */
     public void setServicios(ServiciosCliente servicio) {
         this.servicios = servicio;
     }
     
+    /**
+     * 
+     * @return True si se ha guardado correctamente
+     */
     public boolean guardar(){
         return guardar(servicios);
     }
 
+    /**
+     * 
+     * @param text
+     * @param tipo
+     * @return Lista de Servicios Clientes
+     */
     public Lista<ServiciosCliente> BusquedaServicios(String text, Integer tipo) {
         Lista<ServiciosCliente> lista = new Lista();
         Lista<ServiciosCliente> aux = listar();
