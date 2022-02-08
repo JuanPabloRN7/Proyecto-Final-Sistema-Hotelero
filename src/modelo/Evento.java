@@ -15,7 +15,7 @@ public class Evento extends Servicio{
     private Double duracion;
 
     /**
-     * @param  
+     *  
      * @return Retorna la Fecha
      */
     public String getFecha() {
