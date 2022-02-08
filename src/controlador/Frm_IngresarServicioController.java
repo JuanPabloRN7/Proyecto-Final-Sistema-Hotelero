@@ -58,6 +58,9 @@ public class Frm_IngresarServicioController implements Initializable {
         limpiar();
     }
 
+    /**
+     * Carga la Tabla
+     */
     private void cargarTabla() {
         Lista<Servicio> lista = new Lista<>();
         lista = serviciodao.listar();
@@ -72,6 +75,9 @@ public class Frm_IngresarServicioController implements Initializable {
         //Tabla.getItems().setAll(listaFX);
     }
 
+    /**
+     * Ingresa los servicios o Modificar segun sea el caso
+     */
     @FXML
     private void ingresarServicio() {
         if (validar()) {
@@ -99,6 +105,13 @@ public class Frm_IngresarServicioController implements Initializable {
         }
     }
 
+    /**
+     * 
+     * @param tipo
+     * @param titulo
+     * @param cabecera
+     * @param mensaje 
+     */
     private void crearAlerta(Alert.AlertType tipo, String titulo, String cabecera, String mensaje) {
         Alert alerta = new Alert(tipo);
         alerta.setTitle(titulo);
@@ -107,10 +120,17 @@ public class Frm_IngresarServicioController implements Initializable {
         alerta.showAndWait();
     }
 
+    /**
+     * Valida si los campos estan vacios
+     * @return 
+     */
     private boolean validar() {
         return txServicio.getText().trim().length() > 0 && txPrecio.getText().trim().length() > 0;
     }
 
+    /**
+     *  Limpia el Objeto y los Tx, y cara la Tabla
+     */
     private void limpiar() {
         serviciodao.setServicio(null);
         cargarTabla();
@@ -118,6 +138,10 @@ public class Frm_IngresarServicioController implements Initializable {
         txPrecio.setText("");
     }
 
+    /**
+     * Setea la fila seleccionada todos sus datos a los respectivos TextField
+     * @param event 
+     */
     @FXML
     private void modificarServicio(ActionEvent event) {
         fila = Tabla.getSelectionModel().getSelectedIndex();
