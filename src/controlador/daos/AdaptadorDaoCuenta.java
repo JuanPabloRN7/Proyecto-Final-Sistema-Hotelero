@@ -55,11 +55,6 @@ public class AdaptadorDaoCuenta<T> implements InterfazDao<T>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean modificar(String nombre, String apellido, String telefono, String cargo, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * Obtiene todas las cuentas de la base de datos.
      * @return Lista de Tipo Cuenta.
@@ -84,6 +79,47 @@ public class AdaptadorDaoCuenta<T> implements InterfazDao<T>{
             ex.printStackTrace();
         }
         return lista;
+    }
+    
+    /**
+     * Modificar la clave de una cuenta empleado.
+     * @param dato Objeto tipo Cuenta nueva cuenta.
+     * @return 
+     */
+    @Override
+    public boolean modificar(T dato) {
+        Connection conexion = conexionDB.conectar();
+        Cuenta cuenta = (Cuenta)dato;
+        try {
+            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET clave = '"+cuenta.getClave()+"' WHERE identificacion ='"+cuenta.getIdentificacion()+"'");
+            int verificacion = ps.executeUpdate();
+            ps.close();
+            if (verificacion>0) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean eliminar(String id){
+        Connection conexion = conexionDB.conectar();
+        try {
+            PreparedStatement ps = conexion.prepareStatement("DELETE FROM cuentas WHERE identificacion='"+id+"'");
+            int verificacion = ps.executeUpdate();
+            ps.close();
+            if (verificacion>0) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }          
     }
     
 }

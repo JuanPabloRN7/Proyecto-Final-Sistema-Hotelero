@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_AsignarCargoController">
    <children>
-      <TableView fx:id="tblEmpleados" layoutX="321.0" layoutY="68.0" prefHeight="260.0" prefWidth="522.0">
+      <TableView fx:id="tblEmpleados" layoutX="321.0" layoutY="68.0" onMouseClicked="#modificarEmpleado" prefHeight="260.0" prefWidth="522.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="75.0" text="IDEmpleado" />
           <TableColumn fx:id="colNombres" prefWidth="111.0" text="Nombres" />

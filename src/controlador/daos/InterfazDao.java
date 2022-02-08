@@ -26,16 +26,13 @@ public interface InterfazDao<T> {
      * @return Retorna true si se ha guardado.
      */
     public boolean modificar(String dato, String ID);
+
     /**
      * Metodo para modificar
-     * @param nombre Nuevo nombre
-     * @param apellido  Nuevo apellido
-     * @param telefono Nuevo telefono
-     * @param cargo Nuevo cargo
-     * @param id Id del objeto a modificar.
-     * @return True si se ha modificado.
+     * @param dato Objeto a modificar;
+     * @return 
      */
-    public boolean modificar(String nombre, String apellido, String telefono, String cargo, String id);
+    public boolean modificar(T dato);
     /**
      * Metodo para obtener una lista de objetos.
      * @return Una lista de de objetos.

@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import controlador.daos.CuentaDao;
 import controlador.daos.EmpleadoDao;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -34,6 +36,7 @@ import modelo.Empleado;
  */
 public class Frm_AsignarCargoController implements Initializable {
     private EmpleadoDao empleadoDao = new EmpleadoDao();
+    private CuentaDao cuentaDao = new CuentaDao();
     private EmpleadoController ec = new EmpleadoController();
     
     private @FXML TableView tblEmpleados;
@@ -44,6 +47,7 @@ public class Frm_AsignarCargoController implements Initializable {
     private @FXML TableColumn<Empleado, String> colTelefono;
     private @FXML TableColumn<Empleado, String> colCargo;
     private @FXML Pane panelFormulario;
+    private @FXML Frm_PanelAddEmpleadoController controllerAdd;
     private @FXML ComboBox cbxParametro;
     private @FXML TextField txtCampoBusqueda;
     
@@ -69,8 +73,10 @@ public class Frm_AsignarCargoController implements Initializable {
      */
     private void cargarFormulario(){
         try{
-            Pane formulario = FXMLLoader.load(getClass().getResource("/vista/Frm_PanelAddEmpleado.fxml"));
-            panelFormulario.getChildren().add(formulario);
+            FXMLLoader formulario = new FXMLLoader(getClass().getResource("/vista/Frm_PanelAddEmpleado.fxml"));
+            Parent root = formulario.load();
+            controllerAdd = formulario.getController();
+            panelFormulario.getChildren().add(root);
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -146,6 +152,7 @@ public class Frm_AsignarCargoController implements Initializable {
             if(alerta.showAndWait().get() == ButtonType.OK){
                 Empleado empleado = (Empleado)tblEmpleados.getSelectionModel().getSelectedItem();
                 if(empleadoDao.eliminar(empleado.getIdentificacion())){
+                    cuentaDao.eliminar(empleado.getIdentificacion());
                     crearAlerta(Alert.AlertType.INFORMATION, "Informacion", "Empleado eliminado", "El empleado se ha eliminado correctamente");
                     cargarTabla(empleadoDao.listar());
                 }else{
@@ -155,4 +162,9 @@ public class Frm_AsignarCargoController implements Initializable {
         }
     }
     
+    @FXML
+    private void modificarEmpleado(){
+        Empleado empleado = (Empleado) tblEmpleados.getSelectionModel().getSelectedItem();
+        controllerAdd.cargarDatosEmpleado(empleado);
+    }
 }

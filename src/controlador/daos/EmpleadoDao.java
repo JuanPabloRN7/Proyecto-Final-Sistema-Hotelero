@@ -48,4 +48,8 @@ public class EmpleadoDao extends AdaptadorDaoEmpleado<Empleado>{
         return guardar(empleado);
     }
     
+    public boolean modificar(){
+        return modificar(empleado);
+    }
+    
 }

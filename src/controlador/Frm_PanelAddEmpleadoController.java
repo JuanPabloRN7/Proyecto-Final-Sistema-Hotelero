@@ -15,12 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import lista.controlador.Lista;
 import modelo.Empleado;
 import modelo.enums.TipoEmpleado;
 
@@ -48,6 +48,9 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
     private @FXML VBox vboxDatos;
     private @FXML VBox vboxEmpleado;
     private @FXML HBox hboxEmpleado;
+    private @FXML Button btnAdd;
+    private @FXML Button btnActualizar;
+    private @FXML Button btnLimpiar;
     /**
      * Initializes the controller class.
      */
@@ -55,6 +58,8 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ec.setEmpleados(empleadoDao.listar());
         cargarCbxCargo();
+        btnActualizar.setDisable(true);
+        btnLimpiar.setDisable(true);
     }
     
     /**
@@ -101,6 +106,9 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
                         cuentaDao.guardar();
                     }
                     crearAlerta(AlertType.INFORMATION, "OK", "Datos guardados", "Los datos se han almacenado correctamente");
+                    empleadoDao.setEmpleado(null);
+                    cuentaDao.setCuenta(null);
+                    limpiarCampos();
                 }else{
                     crearAlerta(AlertType.ERROR, "Error", "Datos no guardados", "Ha surgido un error al guardar los datos");
                 }
@@ -146,4 +154,70 @@ public class Frm_PanelAddEmpleadoController implements Initializable {
         return false;
     }
     
+    public void cargarDatosEmpleado(Empleado empleado){
+        txtNombres.setText(empleado.getNombres());
+        txtApellidos.setText(empleado.getApellidos());
+        txtFecha.setValue(empleado.getFechaNacimiento());
+        txtDireccion.setText(empleado.getDireccion());
+        txtID.setText(empleado.getIdentificacion());
+        txtTelefono.setText(empleado.getTelefono());
+        txtCedula.setText(empleado.getCedula());
+        cbxCargo.setValue(empleado.getRol().getCargo());
+        txtID.setDisable(true);
+        btnAdd.setDisable(true);
+        btnActualizar.setDisable(false);
+        btnLimpiar.setDisable(false);
+    }
+    
+    @FXML
+    private void modificarEmpleado(){
+        if(verificarCampos()){
+            empleadoDao.getEmpleado().setApellidos(txtApellidos.getText());
+            empleadoDao.getEmpleado().setNombres(txtNombres.getText());
+            empleadoDao.getEmpleado().setTelefono(txtTelefono.getText());
+            empleadoDao.getEmpleado().setDireccion(txtDireccion.getText());
+            empleadoDao.getEmpleado().setCedula(txtCedula.getText());
+            empleadoDao.getEmpleado().setFechaNacimiento(txtFecha.getValue());
+            empleadoDao.getEmpleado().setIdentificacion(txtID.getText());
+            empleadoDao.getEmpleado().getRol().setCargo(cbxCargo.getSelectionModel().getSelectedItem().toString());
+            empleadoDao.getEmpleado().getRol().setAutorizacion(ec.asignarAutorizacion(cbxCargo.getSelectionModel().getSelectedItem().toString()));
+            pc.setPersona(empleadoDao.getEmpleado());
+            if(pc.verificarCedula()){
+                if (empleadoDao.modificar()) {
+                    if(cbxCargo.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("RECEPCIONISTA") || cbxCargo.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("GERENTE")){
+                        cuentaDao.getCuenta().setIdentificacion(txtID.getText().trim());
+                        cuentaDao.getCuenta().setClave(txtClave.getText().trim());
+                        cuentaDao.modificar();
+                    }
+                    crearAlerta(AlertType.INFORMATION, "OK", "Datos actualizados", "Los datos se han actualizado correctamente");
+                    empleadoDao.setEmpleado(null);
+                    cuentaDao.setCuenta(null);
+                    limpiarCampos();
+                }else{
+                    crearAlerta(AlertType.ERROR, "Error", "Datos no actualizados", "Ha surgido un error al actualizar los datos");
+                }
+            }else{
+                crearAlerta(AlertType.ERROR, "Error", "Cedula inválida", "El número de cedula ingresado no es válido");
+            }
+        }else{
+            crearAlerta(AlertType.INFORMATION, "Error", "Campos vacios", "Rellene todos los campos para actualizar al empleado");
+        }
+    }
+    
+    @FXML
+    private void limpiarCampos(){
+        boolean camposTexto = true;
+        for (Node nodo : vboxDatos.getChildren()) {
+            if (nodo instanceof TextField) {
+                ((TextField)nodo).setText("");
+            }
+        }
+        cbxCargo.setValue(null);
+        txtFecha.setValue(null);
+        txtID.setText("");
+        txtClave.setText("");
+        btnActualizar.setDisable(true);
+        btnLimpiar.setDisable(true);
+        btnAdd.setDisable(false);
+    }
 }

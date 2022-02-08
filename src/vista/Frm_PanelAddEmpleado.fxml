@@ -15,7 +15,7 @@
    <children>
       <Pane prefHeight="392.0" prefWidth="307.0">
          <children>
-            <Button layoutX="121.0" layoutY="344.0" mnemonicParsing="false" onAction="#addEmpleado" text="Añadir" />
+            <Button fx:id="btnAdd" layoutX="43.0" layoutY="347.0" mnemonicParsing="false" onAction="#addEmpleado" text="Añadir" />
             <HBox layoutX="12.0" layoutY="58.0" prefHeight="188.0" prefWidth="268.0">
                <children>
                   <VBox prefHeight="178.0" prefWidth="105.0" spacing="15.0">
@@ -62,6 +62,8 @@
                   </VBox>
                </children>
             </HBox>
+            <Button fx:id="btnActualizar" layoutX="112.0" layoutY="347.0" mnemonicParsing="false" onAction="#modificarEmpleado" text="Actualizar" />
+            <Button fx:id="btnLimpiar" layoutX="210.0" layoutY="347.0" mnemonicParsing="false" onAction="#limpiarCampos" text="Limpiar" />
          </children>
       </Pane>
    </children>

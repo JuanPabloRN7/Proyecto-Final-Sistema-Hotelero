@@ -40,4 +40,8 @@ public class CuentaDao extends AdaptadorDaoCuenta<Cuenta>{
         cuenta.setId(Long.valueOf(listar().sizeLista()+1));
         return guardar(cuenta);
     }
+    
+    public boolean modificar(){
+        return modificar(cuenta);
+    }
 }

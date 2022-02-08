@@ -68,20 +68,16 @@ public class AdaptadorDaoEmpleado<T> implements InterfazDao<T>{
     }
     
     /**
-     * Modifica los datos de un empleado en la base de datos
-     * @param nombre Nombre del empleado
-     * @param apellido Apellido del empleado
-     * @param telefono Telefono del empleado
-     * @param cargo Cargo del empleado
-     * @param id ID de empleado que se modificarra
-     * @return Retorna true si se modifica el empleado.
+     * Modifica  un empleado segun su id de empleado.
+     * @param dato Empleado con nuevos valores
+     * @return True si se la modificado correctamente.
      */
     @Override
-    public boolean modificar(String nombre, String apellido, String telefono, String cargo, String id) {
+    public boolean modificar(T dato) {
         Connection conexion = conexionDB.conectar();
+        Empleado empleado = (Empleado)dato;
         try {
-            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+cargo+"', SET Telefono = '"+telefono+"', SET Nombres = '"+nombre+"', "
-                    + "SET Apellidos = '"+apellido+"', SET Cargo = '"+cargo+"' WHERE IDEmpleado='"+id+"'");
+            PreparedStatement ps = conexion.prepareStatement("UPDATE empleados SET Cargo = '"+empleado.getRol().getCargo()+"', Telefono = '"+empleado.getTelefono()+"', Nombres = '"+empleado.getNombres()+"', Apellidos = '"+empleado.getApellidos()+"', Direccion = '"+empleado.getDireccion()+"', Cedula = '"+empleado.getCedula()+"', FechaNacimiento = '"+empleado.getFechaNacimiento().toString()+"' WHERE IDEmpleado = '"+empleado.getIdentificacion()+"';");
             int verificacion = ps.executeUpdate();
             ps.close();
             if (verificacion>0) {
