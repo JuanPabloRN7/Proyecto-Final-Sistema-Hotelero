@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="476.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.Frm_SalidaClienteController">
+   <children>
+      <AnchorPane layoutX="6.0" layoutY="8.0" prefHeight="463.0" prefWidth="322.0" style="-fx-background-color: #D2BC97;">
+         <children>
+            <Label layoutX="42.0" prefHeight="36.0" prefWidth="206.0" text="Checkout">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnguardar" layoutX="27.0" layoutY="423.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Guardar" />
+            <VBox fx:id="vBoxHospedaje" layoutX="120.0" layoutY="239.0" prefHeight="178.0" prefWidth="146.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="txtcliente" prefHeight="26.0" prefWidth="197.0" />
+                  <TextField fx:id="txthabitacion" prefHeight="26.0" prefWidth="214.0" />
+                  <TextField fx:id="txtestancia" prefHeight="26.0" prefWidth="214.0" />
+                  <TextField fx:id="txtprecioh" layoutX="10.0" layoutY="82.0" prefHeight="26.0" prefWidth="214.0" />
+                  <TextField fx:id="txttotal" layoutX="10.0" layoutY="118.0" prefHeight="26.0" prefWidth="214.0" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../NetBeansProjects/Proyecto-Final-Sistema-Hotelero/src/imagenes/ingresar.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="20.0" layoutY="110.0" text="Servico" />
+            <Label layoutX="26.0" layoutY="237.0" text="Cliente" />
+            <Label layoutX="22.0" layoutY="143.0" prefWidth="41.0" text="Precio " />
+            <Label layoutX="26.0" layoutY="274.0" text="Habitacion" />
+            <Label layoutX="33.0" layoutY="348.0" text="Precio " />
+            <TextField fx:id="txtservicio" layoutX="106.0" layoutY="105.0" prefHeight="26.0" prefWidth="152.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <Button fx:id="btnelegirsr" layoutX="133.0" layoutY="74.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="44.0" text="...." />
+            <Label layoutX="13.0" layoutY="52.0" text="Contrato un servicio">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPrecio" layoutX="106.0" layoutY="138.0" prefHeight="26.0" prefWidth="152.0" />
+            <Label layoutX="29.0" layoutY="179.0" text="Hospedaje">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="313.0" text="Estancia" />
+            <Label layoutX="27.0" layoutY="381.0" text="Total de Pago" />
+            <Label layoutX="26.0" layoutY="208.0" text="Tiene reserva" />
+            <Label layoutX="17.0" layoutY="78.0" prefHeight="15.0" prefWidth="80.0" text="Tiene reserva" />
+            <Button fx:id="btnelegirrh" layoutX="139.0" layoutY="204.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="44.0" text="...." />
+            <Button fx:id="btngenerarf" layoutX="193.0" layoutY="423.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Generar factura" />
+            <Button fx:id="btnelegirs" layoutX="213.0" layoutY="74.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="44.0" text="...." />
+            <Label layoutX="113.0" layoutY="78.0" prefHeight="15.0" prefWidth="20.0" text="si" />
+            <Label layoutX="190.0" layoutY="78.0" prefHeight="15.0" prefWidth="20.0" text="no" />
+            <Button fx:id="btnelegirrh1" layoutX="222.0" layoutY="204.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="44.0" text="...." />
+            <Label layoutX="120.0" layoutY="208.0" prefHeight="15.0" prefWidth="20.0" text="si" />
+            <Label layoutX="200.0" layoutY="208.0" prefHeight="15.0" prefWidth="20.0" text="no" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblPagos" layoutX="336.0" layoutY="85.0" prefHeight="243.0" prefWidth="504.0">
+         <columns>
+            <TableColumn fx:id="columServicio" prefWidth="69.0" text="ServiciosA" />
+            <TableColumn fx:id="columCliente" prefWidth="71.0" text="Cliente" />
+            <TableColumn fx:id="columHabitacion" minWidth="0.0" prefWidth="79.0" text="Habitacion" />
+            <TableColumn fx:id="ColumEstancia" prefWidth="69.0" text="Estancia" />
+            <TableColumn fx:id="columPrecioH" prefWidth="75.0" text="PrecioH" />
+            <TableColumn fx:id="columPrecioS" prefWidth="62.0" text="PrecioServico" />
+            <TableColumn fx:id="columTotal" prefWidth="75.0" text="Total" />
+         </columns>
+      </TableView>
+      <TextField fx:id="txtBuscar" layoutX="465.0" layoutY="31.0" prefHeight="26.0" prefWidth="322.0" promptText="Buscar por nombre y apellido" />
+      <ComboBox fx:id="cbxcriterio" layoutX="336.0" layoutY="31.0" prefHeight="26.0" prefWidth="127.0" />
+      <Button layoutX="798.0" layoutY="31.0" mnemonicParsing="false" onAction="#buscar" prefHeight="26.0" prefWidth="29.0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="802.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../NetBeansProjects/Proyecto-Final-Sistema-Hotelero/src/imagenes/buscar.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
