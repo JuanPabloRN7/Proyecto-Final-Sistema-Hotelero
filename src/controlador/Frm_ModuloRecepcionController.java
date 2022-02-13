@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 public class Frm_ModuloRecepcionController implements Initializable {
     
      private @FXML Button btncliente;
+      private @FXML Button btnsalida;
 
     /**
      * Initializes the controller class.
@@ -32,15 +33,24 @@ public class Frm_ModuloRecepcionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }   
+    /**
+     * Permite seleccionar  ventanas de salida y entrada de cliente
+     *  @param e
+     */
     
     @FXML
     private void seleccionarVentana(ActionEvent e){
-        //if (e.getSource() == btncliente) {
-            cargarVentana("/vista/Frm_IngresarCheckin.fxml");
-        //}else{
-           // cargarVentana("/vista/Frm_AsignarCargo.fxml");
-        //}
+        if (e.getSource() == btncliente) {
+            cargarVentana("/vista/Frm_IngresarCliente.fxml");
+        }else if (e.getSource() == btnsalida) {
+            cargarVentana("/vista/Frm_SalidaCliente.fxml");
+        }
+        
     }
+    /**
+     * Permite abrir las ventanas
+     *  @param direeccion 
+     */
     
     private void cargarVentana(String direccion){
         try{
