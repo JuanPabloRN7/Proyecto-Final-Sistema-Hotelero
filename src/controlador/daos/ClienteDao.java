@@ -6,41 +6,45 @@
 package controlador.daos;
 
 import lista.controlador.Lista;
+import modelo.Cliente;
 import modelo.Persona;
 
 /**
  *
  * @author pablo
  */
-public class ClienteDao extends AdaptadorDaoCliente<Persona> {
+public class ClienteDao extends AdaptadorDaoCliente<Cliente> {
 
-    private Persona persona;
+    //private Persona persona;
+    private Cliente cliente;
 
     public ClienteDao() {
-        super(Persona.class);
+        super(Cliente.class);
     }
 
-    public Persona getPersona() {
-        if (persona == null) {
-            persona = new Persona();
+    public Cliente getCliente() {
+         if (cliente == null) {
+            cliente =  new Cliente();
         }
-        return persona;
+        return cliente;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public boolean guardar() {
-//        persona.setIdPersona(Long.valueOf(listar().sizeLista() + 1));
-        return guardar(persona);
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
-    public Lista<Persona> buscarCliente(String dato, Integer tipo){
-        Lista<Persona> lista = new Lista();
-        Lista<Persona> aux = listar();
+    
+    
+    public boolean guardar() {
+//        persona.setIdPersona(Long.valueOf(listar().sizeLista() + 1));
+        return guardar1(cliente);
+    }
+    
+    public Lista<Cliente> buscarCliente(String dato, Integer tipo){
+        Lista<Cliente> lista = new Lista();
+        Lista<Cliente> aux = listar();
         for (int i = 0; i < aux.sizeLista(); i++) {
-            Persona p = aux.consultarDatoPosicion(i);
+            Cliente p = aux.consultarDatoPosicion(i);
             Boolean band = (tipo == 1) ? p.getApellidos().toLowerCase().contains(dato.toLowerCase()) : 
                     p.getNombres().toLowerCase().contains(dato.toLowerCase());
             if (band) {
