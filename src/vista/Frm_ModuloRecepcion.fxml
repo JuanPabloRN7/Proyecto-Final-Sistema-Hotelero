@@ -14,11 +14,12 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btncliente" layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#seleccionarVentana" style="-fx-background-color: #9DEEC6;" text="Ingresar cliente " />
+      <Button fx:id="btncliente" layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#seleccionarVentana" style="-fx-background-color: #9DEEC6;" text="Entrada Cliente " />
       <ImageView fitHeight="210.0" fitWidth="371.0" layoutX="56.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/ImaRec.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="btnsalida" layoutX="257.0" layoutY="320.0" mnemonicParsing="false" onAction="#seleccionarVentana" style="-fx-background-color: #9DEEC6;" text="Salida Cliente " />
    </children>
 </AnchorPane>

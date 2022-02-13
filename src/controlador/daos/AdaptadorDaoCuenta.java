@@ -121,5 +121,10 @@ public class AdaptadorDaoCuenta<T> implements InterfazDao<T>{
             return false;
         }          
     }
+
+    @Override
+    public boolean modificar(T dato, int ID) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

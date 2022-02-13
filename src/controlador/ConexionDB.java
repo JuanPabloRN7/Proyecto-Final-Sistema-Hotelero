@@ -22,11 +22,13 @@ public class ConexionDB {
      */
     public Connection conectar() {
         //Cambiar las variables url, user y pwd
-        String user = "Specter";
-        String pwd = "dedsec8";   
+//        String user = "Specter";
+//        String pwd = "dedsec8"; 
+        String user = "root";
+        String pwd = ""; 
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mariadb://localhost:3306/sistemahotelero";
+            String url = "jdbc:mysql://localhost:3306/sistemahotelero";
             conexion = DriverManager.getConnection(url, user, pwd);
             System.out.println("Conexión realizada correctamente");
         } catch (SQLException e) {

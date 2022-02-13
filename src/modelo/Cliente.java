@@ -15,19 +15,10 @@ public class Cliente  extends Persona{
     
     
     private String hora_entrada;
-    private String hora_estimada;
     private String nrohabitacion;
-    private LocalDate Fecha_inicio;
     private LocalDate Fecha_final;
 
-    public LocalDate getFecha_inicio() {
-        return Fecha_inicio;
-    }
-
-    public void setFecha_inicio(LocalDate Fecha_inicio) {
-        this.Fecha_inicio = Fecha_inicio;
-    }
-
+   
     public LocalDate getFecha_final() {
         return Fecha_final;
     }
@@ -51,15 +42,6 @@ public class Cliente  extends Persona{
     public void setHora_entrada(String hora_entrada) {
         this.hora_entrada = hora_entrada;
     }
-
-    public String getHora_estimada() {
-        return hora_estimada;
-    }
-
-    public void setHora_estimada(String hora_estimada) {
-        this.hora_estimada = hora_estimada;
-    }
-    
 
     
 }

@@ -61,6 +61,7 @@ public class Frm_IRController implements Initializable {
     private @FXML TableColumn<?, ?> colFechaSalida;
     private @FXML ComboBox<?> cbxservicios;
     private @FXML Button btnReserva;
+    String test;
 
     /**
      * Initializes the controller class.
@@ -139,7 +140,7 @@ public class Frm_IRController implements Initializable {
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            contro.btnseleccionar.setVisible(true);
+            contro.btnseleccionar2.setVisible(true);
             stage.showAndWait();
             this.txtCliente.setText(contro.clienteDao.listar().consultarDatoPosicion(contro.select).getApellidos() + " " + contro.clienteDao.listar().consultarDatoPosicion(contro.select).getNombres());
         } catch (IOException ex) {
